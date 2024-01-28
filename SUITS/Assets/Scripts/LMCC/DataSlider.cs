@@ -12,6 +12,17 @@ public class DataSlider : MonoBehaviour
 {
     // The "code" for the data type (e.g., "HeartRate")
     // (so the telemetry stream client knows which value to check)
+    
+    // Add a public TextMeshProUGUI variable to display notifications
+    public TextMeshProUGUI notificationText;
+
+    // Referance to ElapsedTime script
+    public ElapsedTime elapsedTimeScript;
+
+    // List to store notifications
+    private List<string> notifications = new List<string>();
+    private Dictionary<int, string> lastNotificationTime = new Dictionary<int, string>();
+
     public string data = "HeartRate";
 
     // The slider itself
@@ -76,6 +87,11 @@ public class DataSlider : MonoBehaviour
         slider.minValue = minimumValue;
         slider.maxValue = maximumValue;
 
+        notificationText.text = "";
+        Color textColor = notificationText.color;
+        textColor.a = 1f;
+        notificationText.color = textColor;
+
     }
 
     // Update is called once per frame
@@ -93,6 +109,12 @@ public class DataSlider : MonoBehaviour
 
         // Color the fill bar according to the safety state
         colorFillSafety();
+
+        // Check and show notifications based on heart rate tresholds
+        checkAndShowNotifications();
+
+        // Display notifications in the UI
+        //DisplayNotifications();
 
     }
 
@@ -143,4 +165,70 @@ public class DataSlider : MonoBehaviour
         }
     }
 
+    void checkAndShowNotifications()
+    {
+        if (data == "HeartRate")
+        {
+            float heartRatePercentage = (currentValue / maximumValue) * 100;
+
+            if (heartRatePercentage <= 50 && heartRatePercentage > 20)
+            {
+                AddNotification(50, "Heart rate is 50%");
+            }
+            else if (heartRatePercentage <= 20 && heartRatePercentage > 10)
+            {
+                AddNotification(20, "Heart rate is 20%");
+            }
+            else if (heartRatePercentage <= 10 && heartRatePercentage > 5)
+            {
+                AddNotification(10, "Heart rate is 10%");
+            }
+            else if (heartRatePercentage <= 5)
+            {
+                AddNotification(5, "Heart rate is 5%");
+            }
+            else
+            {
+                // Clear the notification if heart rate is above the thresholds
+                ClearNotification();
+            }
+        }
+    }
+    void AddNotification(float threshold, string notification)
+    {
+        // Check if a notification for this threshold was already added at the current time
+        
+        if (!lastNotificationTime.ContainsKey((int)threshold))
+        {
+            // Add the notification
+            string currentTime = elapsedTimeScript.GetFormattedTime();
+            notifications.Add("Time: " + currentTime + " " + notification);
+
+            // Update the last notification time for this threshold
+            lastNotificationTime[(int)threshold] = currentTime;
+
+            // Display notifications in the UI
+            DisplayNotifications();
+          
+        }
+    }
+
+    void DisplayNotifications()
+    {
+        if (notifications != null)
+        {
+            notificationText.text = string.Join("\n\n", notifications);
+            notificationText.text += "\n";
+        }
+    }
+
+
+    // Clear the notification
+    void ClearNotification()
+    {
+        if (notificationText != null)
+        {
+            notificationText.text = "";
+        }
+    }
 }

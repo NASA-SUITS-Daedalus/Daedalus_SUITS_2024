@@ -20,7 +20,7 @@ using TMPro;
 public class ElapsedTime : MonoBehaviour
 {
     // The current time
-    float currentTime;
+    private float currentTime;
 
     // The text mesh that displays the elapsed time
     public TextMeshProUGUI timeText;
@@ -29,6 +29,12 @@ public class ElapsedTime : MonoBehaviour
     void Start()
     {
         currentTime = 0;
+        timeText.text = "Mission Elapsed Time: " + GetFormattedTime();
+    }
+
+    public float CurrentTime
+    {
+        get { return currentTime; }
     }
 
     // Update is called once per frame
@@ -36,10 +42,14 @@ public class ElapsedTime : MonoBehaviour
     {
         // Update the current time 
         currentTime = currentTime + Time.deltaTime;
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
 
         // Change the text display
-        timeText.text = "Mission Elapsed Time: " +
-            time.ToString(@"hh\:mm\:ss");
+        timeText.text = "Mission Elapsed Time: " + GetFormattedTime();
+    }
+
+    public string GetFormattedTime()
+    {
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        return time.ToString(@"hh\:mm\:ss");
     }
 }
