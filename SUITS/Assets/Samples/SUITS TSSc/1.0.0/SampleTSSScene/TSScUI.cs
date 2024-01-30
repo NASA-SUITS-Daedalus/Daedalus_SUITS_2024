@@ -125,7 +125,7 @@ public class TSScUI : MonoBehaviour
         Debug.Log("Button Pressed: " + host);
 
         // Connect to TSSc at that Host
-        TSSc.ConnectToHost(host, 0);
+        TSSc.ConnectToHost(host, 6);
     }
 
     public void Disconnect_Button()
