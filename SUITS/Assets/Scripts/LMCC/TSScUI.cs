@@ -35,7 +35,7 @@ public class TSScUI : MonoBehaviour
         // Check if the UIA data has been updated
         if (TSSc.isUIAUpdated())
         {
-            Debug.Log("UIA Updated");
+            // Debug.Log("UIA Updated");
             string UIAJsonString = TSSc.GetUIAJsonString();
 
             // Displays the data on the screen (Your's should be more complicated)
@@ -45,7 +45,7 @@ public class TSScUI : MonoBehaviour
         // Check if the DCU data has been updated
         if (TSSc.isDCUUpdated())
         {
-            Debug.Log("DCU Updated");
+            // Debug.Log("DCU Updated");
 
             // Get the Updated DCU Json
             string DCUJsonString = TSSc.GetDCUJsonString();
@@ -57,7 +57,7 @@ public class TSScUI : MonoBehaviour
         // Check if the ROVER data has been updated
         if (TSSc.isROVERUpdated())
         {
-            Debug.Log("ROVER Updated");
+            // Debug.Log("ROVER Updated");
 
             // Get the Updated ROVER Json
             string ROVERJsonString = TSSc.GetROVERJsonString();
@@ -69,7 +69,7 @@ public class TSScUI : MonoBehaviour
         // Check if the SPEC data has been updated
         if (TSSc.isSPECUpdated())
         {
-            Debug.Log("SPEC Updated");
+            // Debug.Log("SPEC Updated");
 
             // Get the Updated SPEC Json
             string SPECJsonString = TSSc.GetSPECJsonString();
@@ -81,7 +81,7 @@ public class TSScUI : MonoBehaviour
         // Check if the TELEMETRY data has been updated
         if (TSSc.isTELEMETRYUpdated())
         {
-            Debug.Log("TELEMETRY Updated");
+            // Debug.Log("TELEMETRY Updated");
 
             // Get the Updated TELEMETRY Json
             string TELEMETRYJsonString = TSSc.GetTELEMETRYJsonString();
@@ -93,7 +93,7 @@ public class TSScUI : MonoBehaviour
         // Check if the COMM data has been updated
         if (TSSc.isCOMMUpdated())
         {
-            Debug.Log("COMM Updated");
+            // Debug.Log("COMM Updated");
 
             // Get the Updated COMM Json
             string COMMJsonString = TSSc.GetCOMMJsonString();
@@ -105,7 +105,7 @@ public class TSScUI : MonoBehaviour
         // Check if the COMM data has been updated
         if (TSSc.isIMUUpdated())
         {
-            Debug.Log("IMU Updated");
+            // Debug.Log("IMU Updated");
 
             // Get the Updated IMU Json
             string IMUJsonString = TSSc.GetIMUJsonString();
