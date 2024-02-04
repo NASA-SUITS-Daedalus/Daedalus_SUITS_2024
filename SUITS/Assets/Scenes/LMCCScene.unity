@@ -839,9 +839,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39c0f01a91822946928f232e293bdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 14844749}
-  telemetryData:
-    eva_time: 0
+  TSS: {fileID: 14844749}
+  telemetryWrapper:
+    telemetry:
+      eva_time: 0
+      eva1:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
+      eva2:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
 --- !u!1 &105619737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,9 +2086,9 @@ RectTransform:
   - {fileID: 541649146}
   m_Father: {fileID: 53343478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114.3, y: 31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 58, y: 31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397414708
@@ -2053,9 +2100,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 397414706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b56578de816aeb47b9ad3be829d1fc6, type: 3}
+  m_Script: {fileID: 11500000, guid: d9410a395cdd7d14d94e2d213d810e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TELEMETRYDataHandler: {fileID: 75604062}
+  heartRateSlider: {fileID: 1611553751}
+  heartRateText: {fileID: 541649147}
+  lowColor: {r: 1, g: 0, b: 0, a: 0}
+  highColor: {r: 0, g: 1, b: 0, a: 0}
+  lowHeartRate: 60
+  highHeartRate: 100
 --- !u!1 &445265818
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +5656,7 @@ RectTransform:
   m_Father: {fileID: 128590229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6895,13 +6949,13 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 1296286604}
+  m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 200
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

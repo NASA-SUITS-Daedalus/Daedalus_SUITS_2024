@@ -65,7 +65,7 @@ public class TSScDataHandler : MonoBehaviour
         if (TSSc.isTELEMETRYUpdated())
         {
             TELEMETRYData = TSSc.GetTELEMETRYJsonString();
-            Debug.Log("TELEMETRY Data Updated: " + TELEMETRYData);
+            // Debug.Log("TELEMETRY Data Updated: " + TELEMETRYData);
         }
 
         // Check if the COMM data has been updated

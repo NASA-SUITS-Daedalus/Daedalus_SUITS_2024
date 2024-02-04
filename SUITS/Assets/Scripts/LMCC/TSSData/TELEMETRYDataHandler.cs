@@ -53,40 +53,414 @@ public class EvaData
 public class TELEMETRYDataHandler : MonoBehaviour
 {
     // Reference to the TSSc Data Handler script
-    public TSScDataHandler Data;
-
-    public TelemetryData telemetryData;
+    public TSScDataHandler TSS;
+    public TelemetryWrapper telemetryWrapper;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize the telemetry data
-        telemetryData = new TelemetryData();
+        telemetryWrapper = new TelemetryWrapper();
     }
 
-    // Update is called once per frame
-    void Update()
+// Update is called once per frame
+void Update()
     {
-        GetTELEMETRYData();
+        UpdateTELEMETRYData();
     }
 
-    void GetTELEMETRYData()
+    void UpdateTELEMETRYData()
     {
         // Store the JSON string for parsing
-        string telemetryJsonString = Data.GetTELEMETRYData();
+        string telemetryJsonString = TSS.GetTELEMETRYData();
 
         // Parse JSON string into TelemetryWrapper object
         // This stores the JSON value into the TelemetryWrapper object
-        TelemetryWrapper telemetryWrapper = JsonUtility.FromJson<TelemetryWrapper>(telemetryJsonString);
+        telemetryWrapper = JsonUtility.FromJson<TelemetryWrapper>(telemetryJsonString);
+        // Debug.Log($" Heart Rate: {telemetryWrapper.telemetry.eva1.heart_rate}");
 
         // Access specific values
         /*Debug.Log($"Deserialized Telemetry Data:\n" +
                   $"  EVA Time: {telemetryWrapper.telemetry.eva_time}\n" +
                   $"  EVA1 Oxy Pri Storage: {telemetryWrapper.telemetry.eva1.oxy_pri_storage}\n" +
                   $"  EVA1 Batt Time Left: {telemetryWrapper.telemetry.eva1.batt_time_left}\n" +
-                  $"  EVA1 Oxy Sec Storage: {telemetryWrapper.telemetry.eva1.oxy_sec_storage}\n" +
-                  $"  EVA1 Oxy Time Left: {telemetryWrapper.telemetry.eva1.oxy_time_left}\n"
+                  $"  EVA1 Oxy Sec Storage: {telemetryWrapper.telemetryData.eva1.oxy_sec_storage}\n" +
+                  $"  EVA1 Oxy Time Left: {telemetryWrapper.telemetryData.eva1.oxy_time_left}\n"
         // Add more properties as needed
         );*/
+    }
+
+    // Use this function in other scripts to access the live telemetry data
+    public float GetHeartRate(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the heart rate
+            return evaData.heart_rate;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetBattTimeLeft(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.batt_time_left;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetOxyPriStorage(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.oxy_pri_storage;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float OxySecStorage(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.oxy_sec_storage;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetOxyPriPressure(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.oxy_pri_pressure;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetOxySecPressure(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.oxy_sec_pressure;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetOxyTimeLeft(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.oxy_time_left;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetOxyConsumption(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.oxy_consumption;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetCO2Production(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.co2_production;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetSuitPressureOxy(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.suit_pressure_oxy;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetSuitPressureCO2(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.suit_pressure_co2;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetSuitPressureOther(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.suit_pressure_other;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetSuitPresssureTotal(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.suit_pressure_total;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetFanPriRpm(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.fan_pri_rpm;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetFanSecRpm(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.fan_sec_rpm;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetHelmetPressure(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.helmet_pressure_co2;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetScrubber_A_CO2Storage(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.scrubber_a_co2_storage;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetScrubber_B_CO2Storage(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.scrubber_b_co2_storage;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetTemparature(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.temperature;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetCoolantMl(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.coolant_ml;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetCoolantGasPressure(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the oxy_pri_storage
+            return evaData.coolant_gas_pressure;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
+    }
+
+    public float GetCoolantLiquidPressure(string eva)
+    {
+        if (eva == "eva1" || eva == "eva2")
+        {
+            // Check which EVA data is requested
+            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+
+            // Access the batt_time_left
+            return evaData.coolant_liquid_pressure;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid EVA specified. Use 'eva1' or 'eva2'.");
+            return 0f; // Or another default value
+        }
     }
 }
