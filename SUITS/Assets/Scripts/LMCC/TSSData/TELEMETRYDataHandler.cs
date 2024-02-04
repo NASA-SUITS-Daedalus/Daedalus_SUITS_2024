@@ -141,7 +141,7 @@ void Update()
         }
     }
 
-    public float OxySecStorage(string eva)
+    public float GetOxySecStorage(string eva)
     {
         if (eva == "eva1" || eva == "eva2")
         {
