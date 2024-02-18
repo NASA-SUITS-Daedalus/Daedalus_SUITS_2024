@@ -62,6 +62,12 @@ void Update()
 
         // Access specific values
         Debug.Log($"eva1_power: {GetPower("eva1")}");
+        Debug.Log($"eva1_oxy: {GetOxy("eva1")}");
+        Debug.Log($"eva1_water_waste: {GetWater_Waste("eva1")}");
+        Debug.Log($"eva1_water_supply: {GetWater_Supply("eva1")}");
+        Debug.Log($"Oxy_Vent: {GetOxy_Vent()}");
+        Debug.Log($"Depress: {GetDepress()}");
+
                  
         
     }
@@ -82,5 +88,61 @@ void Update()
             Debug.Log("error: specify eva1 or eva2");
             return false;
         }
+    }
+    public bool GetOxy(string eva)
+    {
+        if (eva == "eva1")
+        {
+            return uiaWrapper.uia.eva1_oxy;
+        }
+        else if (eva == "eva2")
+        {
+            return uiaWrapper.uia.eva2_oxy;
+        }
+        else 
+        {
+            Debug.Log("error: specify eva1 or eva2");
+            return false;
+        }
+    }
+    public bool GetWater_Supply(string eva)
+    {
+        if (eva == "eva1")
+        {
+            return uiaWrapper.uia.eva1_water_supply;
+        }
+        else if (eva == "eva2")
+        {
+            return uiaWrapper.uia.eva2_water_supply;
+        }
+        else 
+        {
+            Debug.Log("error: specify eva1 or eva2");
+            return false;
+        }
+    }
+    public bool GetWater_Waste(string eva)
+    {
+        if (eva == "eva1")
+        {
+            return uiaWrapper.uia.eva1_water_waste;
+        }
+        else if (eva == "eva2")
+        {
+            return uiaWrapper.uia.eva2_water_waste;
+        }
+        else 
+        {
+            Debug.Log("error: specify eva1 or eva2");
+            return false;
+        }
+    }
+    public bool GetOxy_Vent()
+    {
+        return uiaWrapper.uia.oxy_vent;
+    }
+    public bool GetDepress()
+    {
+        return uiaWrapper.uia.depress;
     }
 }
