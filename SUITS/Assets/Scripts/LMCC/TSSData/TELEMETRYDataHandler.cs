@@ -19,12 +19,12 @@ public class TelemetryWrapper
 public class TelemetryData
 {
     public float eva_time;
-    public EvaData eva1;
-    public EvaData eva2;
+    public TelemetryEvaData eva1;
+    public TelemetryEvaData eva2;
 }
 
 [System.Serializable]
-public class EvaData
+public class TelemetryEvaData
 {
     public float batt_time_left;
     public float oxy_pri_storage;
@@ -79,14 +79,15 @@ void Update()
         // Debug.Log($" Heart Rate: {telemetryWrapper.telemetry.eva1.heart_rate}");
 
         // Access specific values
-        /*Debug.Log($"Deserialized Telemetry Data:\n" +
-                  $"  EVA Time: {telemetryWrapper.telemetry.eva_time}\n" +
-                  $"  EVA1 Oxy Pri Storage: {telemetryWrapper.telemetry.eva1.oxy_pri_storage}\n" +
-                  $"  EVA1 Batt Time Left: {telemetryWrapper.telemetry.eva1.batt_time_left}\n" +
-                  $"  EVA1 Oxy Sec Storage: {telemetryWrapper.telemetryData.eva1.oxy_sec_storage}\n" +
-                  $"  EVA1 Oxy Time Left: {telemetryWrapper.telemetryData.eva1.oxy_time_left}\n"
-        // Add more properties as needed
-        );*/
+        // Debug.Log($"Deserialized Telemetry Data:\n" +
+        //           $"  EVA Time: {telemetryWrapper.telemetry.eva_time}\n" +
+        //           $"  EVA1 Oxy Pri Storage: {telemetryWrapper.telemetry.eva1.oxy_pri_storage}\n" +
+        //           $"  EVA1 Batt Time Left: {telemetryWrapper.telemetry.eva1.batt_time_left}\n" +
+        //           $"  EVA1 Oxy Sec Storage: {telemetryWrapper.telemetry.eva1.oxy_sec_storage}\n" +
+        //           $"  EVA1 Oxy Time Left: {telemetryWrapper.telemetry.eva1.oxy_time_left}\n"
+        // // Add more properties as needed
+        // );
+    
     }
 
     // Use this function in other scripts to access the live telemetry data
@@ -95,7 +96,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the heart rate
             return evaData.heart_rate;
@@ -112,7 +113,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.batt_time_left;
@@ -129,7 +130,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.oxy_pri_storage;
@@ -146,7 +147,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.oxy_sec_storage;
@@ -163,7 +164,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.oxy_pri_pressure;
@@ -180,7 +181,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.oxy_sec_pressure;
@@ -197,7 +198,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.oxy_time_left;
@@ -214,7 +215,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.oxy_consumption;
@@ -231,7 +232,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.co2_production;
@@ -248,7 +249,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.suit_pressure_oxy;
@@ -265,7 +266,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.suit_pressure_co2;
@@ -282,7 +283,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.suit_pressure_other;
@@ -299,7 +300,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.suit_pressure_total;
@@ -316,7 +317,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.fan_pri_rpm;
@@ -333,7 +334,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.fan_sec_rpm;
@@ -350,7 +351,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.helmet_pressure_co2;
@@ -367,7 +368,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.scrubber_a_co2_storage;
@@ -384,7 +385,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.scrubber_b_co2_storage;
@@ -401,7 +402,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.temperature;
@@ -418,7 +419,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.coolant_ml;
@@ -435,7 +436,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the oxy_pri_storage
             return evaData.coolant_gas_pressure;
@@ -452,7 +453,7 @@ void Update()
         if (eva == "eva1" || eva == "eva2")
         {
             // Check which EVA data is requested
-            EvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
+            TelemetryEvaData evaData = (eva == "eva1") ? telemetryWrapper.telemetry.eva1 : telemetryWrapper.telemetry.eva2;
 
             // Access the batt_time_left
             return evaData.coolant_liquid_pressure;
