@@ -61,15 +61,12 @@ void Update()
         uiaWrapper = JsonUtility.FromJson<UIAWrapper>(uiaJsonString);
 
         // Access specific values
-        Debug.Log($"eva1_power: {GetPower("eva1")}");
-        Debug.Log($"eva1_oxy: {GetOxy("eva1")}");
-        Debug.Log($"eva1_water_waste: {GetWater_Waste("eva1")}");
-        Debug.Log($"eva1_water_supply: {GetWater_Supply("eva1")}");
-        Debug.Log($"Oxy_Vent: {GetOxy_Vent()}");
-        Debug.Log($"Depress: {GetDepress()}");
-
-                 
-        
+        // Debug.Log($"eva1_power: {GetPower("eva1")}");
+        // Debug.Log($"eva1_oxy: {GetOxy("eva1")}");
+        // Debug.Log($"eva1_water_waste: {GetWater_Waste("eva1")}");
+        // Debug.Log($"eva1_water_supply: {GetWater_Supply("eva1")}");
+        // Debug.Log($"Oxy_Vent: {GetOxy_Vent()}");
+        // Debug.Log($"Depress: {GetDepress()}");
     }
 
     // Use this function in other scripts to access the live telemetry data
@@ -85,7 +82,7 @@ void Update()
         }
         else 
         {
-            Debug.Log("error: specify eva1 or eva2");
+            Debug.LogWarning("error: specify eva1 or eva2");
             return false;
         }
     }
@@ -101,7 +98,7 @@ void Update()
         }
         else 
         {
-            Debug.Log("error: specify eva1 or eva2");
+            Debug.LogWarning("error: specify eva1 or eva2");
             return false;
         }
     }
@@ -117,7 +114,7 @@ void Update()
         }
         else 
         {
-            Debug.Log("error: specify eva1 or eva2");
+            Debug.LogWarning("error: specify eva1 or eva2");
             return false;
         }
     }
@@ -133,7 +130,7 @@ void Update()
         }
         else 
         {
-            Debug.Log("error: specify eva1 or eva2");
+            Debug.LogWarning("error: specify eva1 or eva2");
             return false;
         }
     }
