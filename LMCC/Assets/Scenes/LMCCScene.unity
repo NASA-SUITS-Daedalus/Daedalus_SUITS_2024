@@ -385,6 +385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43602208}
+  - component: {fileID: 43602209}
   m_Layer: 0
   m_Name: IMUDataHandler
   m_TagString: Untagged
@@ -407,6 +408,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 14844744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43602209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43602207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d65c65ddccb2044a887f17a381644bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 14844749}
+  imuWrapper:
+    imu:
+      eva1:
+        posx: 0
+        posy: 0
+        heading: 0
+      eva2:
+        posx: 0
+        posy: 0
+        heading: 0
 --- !u!1 &51121848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225137402}
+  - component: {fileID: 225137403}
   m_Layer: 0
   m_Name: ROVERDataHandler
   m_TagString: Untagged
@@ -1052,6 +1077,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 14844744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225137403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225137401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b81e12e8ae7f7345aec0c67beb66e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 14844749}
+  roverWrapper:
+    rover:
+      posx: 0
+      posy: 0
+      qr_id: 0
 --- !u!1 &226696547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,6 +3315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1033642444}
+  - component: {fileID: 1033642445}
   m_Layer: 0
   m_Name: COMMDataHandler
   m_TagString: Untagged
@@ -3294,6 +3338,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 14844744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1033642445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033642443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501420b2d15f244c9b63dfe6ab0aad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 14844749}
+  commWrapper:
+    comm:
+      comm_tower: 0
 --- !u!1 &1048387234
 GameObject:
   m_ObjectHideFlags: 0
