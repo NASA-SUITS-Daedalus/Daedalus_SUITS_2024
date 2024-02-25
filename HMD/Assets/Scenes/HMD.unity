@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 90940152}
+  - component: {fileID: 90940153}
   m_Layer: 0
   m_Name: IMUDataHandler
   m_TagString: Untagged
@@ -154,6 +155,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92864881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &90940153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90940151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da098ea241e7464191dc7e12ba4555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
+  imuWrapper:
+    imu:
+      eva1:
+        posx: 0
+        posy: 0
+        heading: 0
+      eva2:
+        posx: 0
+        posy: 0
+        heading: 0
 --- !u!1 &92864880
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 274463020}
   - component: {fileID: 274463021}
+  - component: {fileID: 274463022}
   m_Layer: 0
   m_Name: TELEMETRYDataHandler
   m_TagString: Untagged
@@ -280,6 +305,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TSS: {fileID: 92864882}
+  telemetryWrapper:
+    telemetry:
+      eva_time: 0
+      eva1:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
+      eva2:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
+--- !u!114 &274463022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274463019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f959b8f3ca9b54c51b5560b24c8e9523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
   telemetryWrapper:
     telemetry:
       eva_time: 0
@@ -417,6 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724193834}
+  - component: {fileID: 724193835}
   m_Layer: 0
   m_Name: COMMDataHandler
   m_TagString: Untagged
@@ -439,6 +527,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92864881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724193835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724193833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05af66d373b94283a8db159b71243b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
+  commWrapper:
+    comm:
+      comm_tower: 0
 --- !u!1 &834483697
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834483698}
   - component: {fileID: 834483699}
+  - component: {fileID: 834483700}
   m_Layer: 0
   m_Name: DCUDataHandler
   m_TagString: Untagged
@@ -500,6 +605,35 @@ MonoBehaviour:
         fan: 0
         pump: 0
         co2: 0
+--- !u!114 &834483700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834483697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7beedc10126854844838c5b21f96f38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
+  dcuWrapper:
+    dcu:
+      eva1:
+        batt: 0
+        oxy: 0
+        comm: 0
+        fan: 0
+        pump: 0
+        co2: 0
+      eva2:
+        batt: 0
+        oxy: 0
+        comm: 0
+        fan: 0
+        pump: 0
+        co2: 0
 --- !u!1 &913971512
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913971513}
   - component: {fileID: 913971514}
+  - component: {fileID: 913971515}
   m_Layer: 0
   m_Name: SPECDataHandler
   m_TagString: Untagged
@@ -545,6 +680,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TSS: {fileID: 92864882}
+  specWrapper:
+    spec:
+      eva1:
+        name: 
+        id: 0
+        data:
+          SiO2: 0
+          TiO2: 0
+          Al2O3: 0
+          FeO: 0
+          MnO: 0
+          MgO: 0
+          CaO: 0
+          K2O: 0
+          P2O3: 0
+          other: 0
+      eva2:
+        name: 
+        id: 0
+        data:
+          SiO2: 0
+          TiO2: 0
+          Al2O3: 0
+          FeO: 0
+          MnO: 0
+          MgO: 0
+          CaO: 0
+          K2O: 0
+          P2O3: 0
+          other: 0
+--- !u!114 &913971515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913971512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f969d579b604e08a862b5bc516c906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
   specWrapper:
     spec:
       eva1:
@@ -766,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466451454}
+  - component: {fileID: 1466451455}
   m_Layer: 0
   m_Name: ROVERDataHandler
   m_TagString: Untagged
@@ -788,6 +967,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92864881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466451455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466451453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcff60cb890da44cc8316532c1473d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
+  roverWrapper:
+    rover:
+      posx: 0
+      posy: 0
+      qr_id: 0
 --- !u!1 &1471104686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771652396}
   - component: {fileID: 1771652397}
+  - component: {fileID: 1771652398}
   m_Layer: 0
   m_Name: UIADataHandler
   m_TagString: Untagged
@@ -1195,6 +1393,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TSS: {fileID: 92864882}
+  uiaWrapper:
+    uia:
+      eva1_power: 0
+      eva1_oxy: 0
+      eva1_water_supply: 0
+      eva1_water_waste: 0
+      eva2_power: 0
+      eva2_oxy: 0
+      eva2_water_supply: 0
+      eva2_water_waste: 0
+      oxy_vent: 0
+      depress: 0
+--- !u!114 &1771652398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771652395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b8f7691bf24677ad01dce229e3ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 0}
   uiaWrapper:
     uia:
       eva1_power: 0
