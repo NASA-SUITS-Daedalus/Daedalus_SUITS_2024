@@ -27,24 +27,29 @@ public class TelemetryData
 public class TelemetryEvaData
 {
     public float batt_time_left;
+    public float heart_rate;
+    public float oxy_consumption;
+    public float co2_production;
+    public float temperature;
+
     public float oxy_pri_storage;
     public float oxy_sec_storage;
     public float oxy_pri_pressure;
     public float oxy_sec_pressure;
     public float oxy_time_left;
-    public float heart_rate;
-    public float oxy_consumption;
-    public float co2_production;
+   
     public float suit_pressure_oxy;
     public float suit_pressure_co2; // Note: Corrected typo in the JSON
     public float suit_pressure_other;
     public float suit_pressure_total;
+    public float helmet_pressure_co2;
+    
     public float fan_pri_rpm;
     public float fan_sec_rpm;
-    public float helmet_pressure_co2;
+    
     public float scrubber_a_co2_storage;
     public float scrubber_b_co2_storage;
-    public float temperature;
+    
     public float coolant_ml;
     public float coolant_gas_pressure;
     public float coolant_liquid_pressure;
