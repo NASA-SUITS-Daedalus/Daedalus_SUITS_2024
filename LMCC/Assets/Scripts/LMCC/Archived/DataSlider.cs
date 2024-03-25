@@ -12,7 +12,7 @@ public class DataSlider : MonoBehaviour
 {
     // The "code" for the data type (e.g., "HeartRate")
     // (so the telemetry stream client knows which value to check)
-
+    
     // Add a public TextMeshProUGUI variable to display notifications
     public TextMeshProUGUI notificationText;
 
@@ -194,28 +194,22 @@ public class DataSlider : MonoBehaviour
             }
         }
     }
-
     void AddNotification(float threshold, string notification)
     {
         // Check if a notification for this threshold was already added at the current time
+        
         if (!lastNotificationTime.ContainsKey((int)threshold))
         {
-            // Add the notification only if formatted time is not null
+            // Add the notification
             string currentTime = elapsedTimeScript.GetFormattedTime();
-            if (currentTime != null)
-            {
-                notifications.Add("Time: " + currentTime + " " + notification);
+            notifications.Add("Time: " + currentTime + " " + notification);
 
-                // Update the last notification time for this threshold
-                lastNotificationTime[(int)threshold] = currentTime;
+            // Update the last notification time for this threshold
+            lastNotificationTime[(int)threshold] = currentTime;
 
-                // Display notifications in the UI
-                DisplayNotifications();
-            }
-            else
-            {
-                Debug.LogWarning("Formatted time is null. Notification not added.");
-            }
+            // Display notifications in the UI
+            DisplayNotifications();
+          
         }
     }
 
@@ -228,6 +222,8 @@ public class DataSlider : MonoBehaviour
         }
     }
 
+
+    // Clear the notification
     void ClearNotification()
     {
         if (notificationText != null)
