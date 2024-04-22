@@ -14,6 +14,9 @@ public class TSScUI : Interactable
     public TMP_Text InputFieldUrl;
     public Button ConnectButton;
 
+    // Reference to the game objects you want to activate
+    public List<GameObject> objectsToActivate;
+
     // Reference to the game object you want to deactivate
     public GameObject objectToDeactivate;
 
@@ -48,6 +51,9 @@ public class TSScUI : Interactable
 
         // Start a coroutine to deactivate the object after a delay
         StartCoroutine(DeactivateObjectDelayed());
+
+        // Activate the list of game objects
+        ActivateObjects();
     }
 
     IEnumerator DeactivateObjectDelayed()
@@ -59,6 +65,15 @@ public class TSScUI : Interactable
         if (objectToDeactivate != null)
         {
             objectToDeactivate.SetActive(false);
+        }
+    }
+
+    void ActivateObjects()
+    {
+        // Loop through the list of game objects and activate each one
+        foreach (GameObject obj in objectsToActivate)
+        {
+            obj.SetActive(true);
         }
     }
 

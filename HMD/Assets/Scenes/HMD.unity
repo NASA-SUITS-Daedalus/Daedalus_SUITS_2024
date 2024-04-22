@@ -276,6 +276,9 @@ MonoBehaviour:
   TSSc: {fileID: 92864883}
   InputFieldUrl: {fileID: 470763196779847850}
   ConnectButton: {fileID: 0}
+  objectsToActivate:
+  - {fileID: 1333129552854350001}
+  - {fileID: 0}
   objectToDeactivate: {fileID: 478417033}
   deactivationDelay: 1
 --- !u!1 &274463019
@@ -579,7 +582,7 @@ MonoBehaviour:
   additionalOffset: {x: 0, y: 0, z: 0.15}
   additionalRotation: {x: 0, y: 0, z: 0}
   updateSolvers: 1
---- !u!21 &583661838
+--- !u!21 &597148442
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -3478,7 +3481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1348279708522576010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4649,7 +4652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Connect
+  m_text: Activate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a84f857bec7e7345843ae29404c57ce, type: 2}
   m_sharedMaterial: {fileID: 21202819797275496, guid: 6a84f857bec7e7345843ae29404c57ce, type: 2}
@@ -6418,7 +6421,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 583661838}
+  - {fileID: 597148442}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
