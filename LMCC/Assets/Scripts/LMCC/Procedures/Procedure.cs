@@ -25,6 +25,9 @@ public abstract class Procedure : MonoBehaviour
     // Whether or not the procedure has started yet
     public bool hasStarted;
 
+    // A helper for the procedure interface
+    public ProcedureUtility helper;
+
     // Whether or not the procedure has been completed
     protected bool hasBeenCompleted;
 
@@ -37,21 +40,47 @@ public abstract class Procedure : MonoBehaviour
     // The list of functions to check each task's status
     protected List<Action> taskChecks;
 
+    // A flag representing if the current task is ready to advance. 
+    protected bool advanceFlag = false;
+
+    // A string to display more information on the current task.
+    protected string info = "";
+
+    // A string to display the current status of the task.
+    protected string status = "";
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         /*
          * Call the function associated with the current task. 
          */
         if (isOngoing() && taskChecks.Count > 0 && activeTaskIdx < taskChecks.Count)
         {
+
+            // Execute the fuction that updates the status of the current task.
             taskChecks[activeTaskIdx]();
+
+            // Set the extra information.
+            statusPopUp.setInfoText(info);
+
+            // Check if the task is ready to advance. 
+            if (advanceFlag)
+            {
+                statusPopUp.setStatusText(status, true);
+                readyActiveTask();
+            }
+
+            // Otherwise, just update the task status. 
+            else
+            {
+                statusPopUp.setStatusText(status, false);
+            }
         }
         
     }
@@ -63,6 +92,7 @@ public abstract class Procedure : MonoBehaviour
      */
     public void startProcedure()
     {
+
         // Make the starting task active
         startTask.makeActive();
 
@@ -76,13 +106,17 @@ public abstract class Procedure : MonoBehaviour
     /*
      * Conclude the procedure after the user has gone through all of the steps.
      * This may include showing an end screen.
+     * 
+     * NOTE: This function is not used anymore. The final task in the list
+     * now knows that it's the final task and will trigger the end screen 
+     * on its own. 
      */
     public void concludeProcedure()
     {
         // Show an end screen, if one exists
         if (endScreen != null)
         {
-            endScreen.SetActive(false);
+            endScreen.SetActive(true);
         }
 
         // Close out the current active task

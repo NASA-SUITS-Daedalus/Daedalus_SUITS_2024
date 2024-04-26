@@ -31,6 +31,12 @@ public class Task : MonoBehaviour
     // Whether or not this task is the last one in its parent step
     public bool isLastTaskInParent;
 
+    // Whether or not this task is the last one in the procedure overall
+    public bool isLastTaskInProcedure = false;
+
+    // The panel to show when the procedure is completed
+    public GameObject procedureCompletePanel;
+
     // The task that follows the current one
     public Task nextTask;
 
@@ -69,7 +75,8 @@ public class Task : MonoBehaviour
     public void makeActive()
     {
         // Make the checkbox interactable
-        //taskUI.GetComponent<Toggle>().interactable = true;
+        // (This should just be for testing)
+        taskUI.GetComponent<Toggle>().interactable = true;
 
         // Set the current active's task's background as active
         taskUI.GetComponent<Image>().color = highlightColor;
@@ -92,8 +99,11 @@ public class Task : MonoBehaviour
         taskUI.GetComponent<Image>().color = readyColor;
 
         // Make the checkbox interactable
-        taskUI.GetComponent<Toggle>().interactable = true;
-
+        if (!hasBeenCompleted)
+        {
+            taskUI.GetComponent<Toggle>().interactable = true;
+        }
+        
     }
 
     /*
@@ -110,6 +120,9 @@ public class Task : MonoBehaviour
     {
         // Enable the next task, if one exists
         if (nextTask != null) { nextTask.makeActive(); }
+
+        // Make the checkbox non-interactable
+        taskUI.GetComponent<Toggle>().interactable = false;
 
         // Disable the current task
         isActive = false;
@@ -131,6 +144,13 @@ public class Task : MonoBehaviour
 
         }
 
+        // If this is the last task in the procedure, show the
+        // "procedure completed" panel.
+        if (isLastTaskInParent && procedureCompletePanel != null)
+        {
+            procedureCompletePanel.SetActive(true);
+        }
+
     }
 
     /*
@@ -141,4 +161,11 @@ public class Task : MonoBehaviour
         return isActive;
     }
 
+    /*
+     * Get the task's completion status.
+     */
+    public bool GetCompletionStatus()
+    {
+        return hasBeenCompleted;
+    }
 }
