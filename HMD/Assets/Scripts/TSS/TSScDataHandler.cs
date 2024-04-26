@@ -37,28 +37,28 @@ public class TSScDataHandler : MonoBehaviour
         if (TSSc.isUIAUpdated())
         {
             UIAData = TSSc.GetUIAJsonString();
-            Debug.Log("UIA Data Updated: " + UIAData);
+            //Debug.Log("UIA Data Updated: " + UIAData);
         }
 
         // Check if the DCU data has been updated
         if (TSSc.isDCUUpdated())
         {
             DCUData = TSSc.GetDCUJsonString();
-            Debug.Log("DCU Data Updated: " + DCUData);
+            //Debug.Log("DCU Data Updated: " + DCUData);
         }
 
         // Check if the ROVER data has been updated
         if (TSSc.isROVERUpdated())
         {
             ROVERData = TSSc.GetROVERJsonString();
-            Debug.Log("ROVER Data Updated: " + ROVERData);
+            //Debug.Log("ROVER Data Updated: " + ROVERData);
         }
 
         // Check if the SPEC data has been updated
         if (TSSc.isSPECUpdated())
         {
             SPECData = TSSc.GetSPECJsonString();
-            Debug.Log("SPEC Data Updated: " + SPECData);
+            //Debug.Log("SPEC Data Updated: " + SPECData);
         }
 
         // Check if the TELEMETRY data has been updated
@@ -72,14 +72,14 @@ public class TSScDataHandler : MonoBehaviour
         if (TSSc.isCOMMUpdated())
         {
             COMMData = TSSc.GetCOMMJsonString();
-            Debug.Log("COMM Data Updated: " + COMMData);
+            // Debug.Log("COMM Data Updated: " + COMMData);
         }
 
         // Check if the IMU data has been updated
         if (TSSc.isIMUUpdated())
         {
             IMUData = TSSc.GetIMUJsonString();
-            Debug.Log("IMU Data Updated: " + IMUData);
+            // Debug.Log("IMU Data Updated: " + IMUData);
         }
     }
 

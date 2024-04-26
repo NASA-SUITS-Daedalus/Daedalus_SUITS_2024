@@ -188,8 +188,8 @@ GameObject:
   m_Component:
   - component: {fileID: 92864881}
   - component: {fileID: 92864882}
-  - component: {fileID: 92864884}
   - component: {fileID: 92864883}
+  - component: {fileID: 92864884}
   m_Layer: 0
   m_Name: TSSDataHandler
   m_TagString: Untagged
@@ -253,34 +253,97 @@ MonoBehaviour:
   m_GameObject: {fileID: 92864880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: affcb610a4f2d490b856ebf3cbce9cab, type: 3}
+  m_Script: {fileID: 11500000, guid: fd21c6dad92ad2042a8e584d0d33d181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 0}
-  InputActionId: 0
-  isGlobal: 0
-  Dimensions: 1
-  dimensionIndex: 0
-  startDimensionIndex: 0
-  CanSelect: 1
-  CanDeselect: 1
-  voiceCommand: 
-  voiceRequiresFocus: 1
-  profiles: []
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  Events: []
-  resetOnDestroy: 0
-  enabledOnStart: 1
-  TSSc: {fileID: 92864883}
-  InputFieldUrl: {fileID: 470763196779847850}
-  ConnectButton: {fileID: 0}
-  objectsToActivate:
-  - {fileID: 1333129552854350001}
-  - {fileID: 0}
-  objectToDeactivate: {fileID: 478417033}
-  deactivationDelay: 1
+  batt_time_left:
+    Min: 3600
+    Nominal: -1
+    Max: 10800
+  oxy_pri_storage:
+    Min: 20
+    Nominal: -1
+    Max: 100
+  oxy_sec_storage:
+    Min: 20
+    Nominal: -1
+    Max: 100
+  oxy_pri_pressure:
+    Min: 600
+    Nominal: -1
+    Max: 3000
+  oxy_sec_pressure:
+    Min: 600
+    Nominal: -1
+    Max: 3000
+  oxy_time_left:
+    Min: 3600
+    Nominal: -1
+    Max: 21600
+  coolant_storage:
+    Min: 80
+    Nominal: 100
+    Max: 100
+  heart_rate:
+    Min: 50
+    Nominal: 90
+    Max: 160
+  oxy_consumption:
+    Min: 0.05
+    Nominal: 0.1
+    Max: 0.15
+  co2_production:
+    Min: 0.05
+    Nominal: 0.1
+    Max: 0.15
+  suit_pressure_oxy:
+    Min: 3.5
+    Nominal: 4
+    Max: 4.1
+  suit_pressure_co2:
+    Min: 0
+    Nominal: 0
+    Max: 0.1
+  suit_pressure_other:
+    Min: 0
+    Nominal: 0
+    Max: 0.5
+  suit_pressure_total:
+    Min: 3.5
+    Nominal: 4
+    Max: 4.5
+  helmet_pressure_co2:
+    Min: 0
+    Nominal: 0.1
+    Max: 0.15
+  fan_pri_rpm:
+    Min: 20000
+    Nominal: 30000
+    Max: 30000
+  fan_sec_rpm:
+    Min: 20000
+    Nominal: 30000
+    Max: 30000
+  scrubber_a_co2_storage:
+    Min: 0
+    Nominal: -1
+    Max: 60
+  scrubber_b_co2_storage:
+    Min: 0
+    Nominal: -1
+    Max: 60
+  temperature:
+    Min: 50
+    Nominal: 70
+    Max: 90
+  coolant_liquid_pressure:
+    Min: 100
+    Nominal: 500
+    Max: 700
+  coolant_gas_pressure:
+    Min: 0
+    Nominal: 0
+    Max: 700
 --- !u!1 &274463019
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 274463020}
   - component: {fileID: 274463021}
-  - component: {fileID: 274463022}
   m_Layer: 0
   m_Name: TELEMETRYDataHandler
   m_TagString: Untagged
@@ -327,68 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TSS: {fileID: 92864882}
-  telemetryWrapper:
-    telemetry:
-      eva_time: 0
-      eva1:
-        batt_time_left: 0
-        oxy_pri_storage: 0
-        oxy_sec_storage: 0
-        oxy_pri_pressure: 0
-        oxy_sec_pressure: 0
-        oxy_time_left: 0
-        heart_rate: 0
-        oxy_consumption: 0
-        co2_production: 0
-        suit_pressure_oxy: 0
-        suit_pressure_co2: 0
-        suit_pressure_other: 0
-        suit_pressure_total: 0
-        fan_pri_rpm: 0
-        fan_sec_rpm: 0
-        helmet_pressure_co2: 0
-        scrubber_a_co2_storage: 0
-        scrubber_b_co2_storage: 0
-        temperature: 0
-        coolant_ml: 0
-        coolant_gas_pressure: 0
-        coolant_liquid_pressure: 0
-      eva2:
-        batt_time_left: 0
-        oxy_pri_storage: 0
-        oxy_sec_storage: 0
-        oxy_pri_pressure: 0
-        oxy_sec_pressure: 0
-        oxy_time_left: 0
-        heart_rate: 0
-        oxy_consumption: 0
-        co2_production: 0
-        suit_pressure_oxy: 0
-        suit_pressure_co2: 0
-        suit_pressure_other: 0
-        suit_pressure_total: 0
-        fan_pri_rpm: 0
-        fan_sec_rpm: 0
-        helmet_pressure_co2: 0
-        scrubber_a_co2_storage: 0
-        scrubber_b_co2_storage: 0
-        temperature: 0
-        coolant_ml: 0
-        coolant_gas_pressure: 0
-        coolant_liquid_pressure: 0
---- !u!114 &274463022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274463019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f959b8f3ca9b54c51b5560b24c8e9523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TSS: {fileID: 0}
   telemetryWrapper:
     telemetry:
       eva_time: 0
@@ -518,6 +518,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2125787506}
   - {fileID: 952637535}
   - {fileID: 2204069622116075579}
   - {fileID: 2204069621651939822}
@@ -614,7 +615,7 @@ RectTransform:
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1759832698111255651}
+  m_Father: {fileID: 1759832698505855506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -853,7 +854,6 @@ GameObject:
   m_Component:
   - component: {fileID: 834483698}
   - component: {fileID: 834483699}
-  - component: {fileID: 834483700}
   m_Layer: 0
   m_Name: DCUDataHandler
   m_TagString: Untagged
@@ -889,35 +889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TSS: {fileID: 92864882}
-  dcuWrapper:
-    dcu:
-      eva1:
-        batt: 0
-        oxy: 0
-        comm: 0
-        fan: 0
-        pump: 0
-        co2: 0
-      eva2:
-        batt: 0
-        oxy: 0
-        comm: 0
-        fan: 0
-        pump: 0
-        co2: 0
---- !u!114 &834483700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834483697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7beedc10126854844838c5b21f96f38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TSS: {fileID: 0}
   dcuWrapper:
     dcu:
       eva1:
@@ -1310,6 +1281,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222789787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222789788}
+  - component: {fileID: 1222789789}
+  m_Layer: 0
+  m_Name: EVTMenuHandlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222789788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222789787}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2313261133327465260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222789789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222789787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57712bf456c4e5c4082f2ebd804f2318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TELEMETRYDataHandler: {fileID: 274463021}
+  telemetryText: {fileID: 1318081979}
 --- !u!1 &1318081977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,8 +1362,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0665, y: -0.0048}
-  m_SizeDelta: {x: 0.06, y: 0.01}
+  m_AnchoredPosition: {x: 0.05207, y: -0.00657}
+  m_SizeDelta: {x: 0.13715, y: 0.19699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1318081979
 MonoBehaviour:
@@ -1490,190 +1507,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!21 &1376246532
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: MixedRealityKeyboardPreviewCaret (Instance)
-  m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ALPHABLEND_ON
-  - _CLIPPING_BOX
-  - _DISABLE_ALBEDO_MAP
-  - _IGNORE_Z_SCALE
-  - _ROUND_CORNERS
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Fade
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ChannelMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _IridescentSpectrumMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbedoAlphaMode: 0
-    - _AlbedoAssignedAtRuntime: 0
-    - _BlendOp: 0
-    - _BlendedClippingWidth: 0
-    - _BorderLight: 0
-    - _BorderLightOpaque: 0
-    - _BorderLightOpaqueAlpha: 1
-    - _BorderLightReplacesAlbedo: 0
-    - _BorderLightUsesHoverColor: 0
-    - _BorderMinValue: 0.1
-    - _BorderWidth: 0.1
-    - _BumpScale: 1
-    - _ClippingBorder: 0
-    - _ClippingBorderWidth: 0.025
-    - _ColorWriteMask: 15
-    - _CullMode: 2
-    - _CustomMode: 2
-    - _Cutoff: 0.5
-    - _DetailNormalMapScale: 1
-    - _DirectionalLight: 0
-    - _DstBlend: 10
-    - _EdgeSmoothingValue: 0.00008
-    - _EnableChannelMap: 0
-    - _EnableEmission: 0
-    - _EnableHoverColorOverride: 0
-    - _EnableLocalSpaceTriplanarMapping: 0
-    - _EnableNormalMap: 0
-    - _EnableProximityLightColorOverride: 0
-    - _EnableSSAA: 0
-    - _EnableTriplanarMapping: 0
-    - _EnvironmentColorIntensity: 0.5
-    - _EnvironmentColorThreshold: 1.5
-    - _EnvironmentColoring: 0
-    - _FadeBeginDistance: 0.85
-    - _FadeCompleteDistance: 0.5
-    - _FadeMinValue: 0
-    - _FluentLightIntensity: 1
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _HoverLight: 0
-    - _IgnoreZScale: 1
-    - _IndependentCorners: 0
-    - _InnerGlow: 0
-    - _InnerGlowPower: 4
-    - _InstancedColor: 0
-    - _Iridescence: 0
-    - _IridescenceAngle: -0.78
-    - _IridescenceIntensity: 0.5
-    - _IridescenceThreshold: 0.05
-    - _Metallic: 0
-    - _MipmapBias: -2
-    - _Mode: 3
-    - _NearLightFade: 0
-    - _NearPlaneFade: 0
-    - _NormalMapScale: 1
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _ProximityLight: 0
-    - _ProximityLightSubtractive: 0
-    - _ProximityLightTwoSided: 0
-    - _Reflections: 0
-    - _Refraction: 0
-    - _RefractiveIndex: 0
-    - _RenderQueueOverride: -1
-    - _RimLight: 0
-    - _RimPower: 0.25
-    - _RoundCornerMargin: 0.123
-    - _RoundCornerRadius: 0.5
-    - _RoundCorners: 1
-    - _Smoothness: 0.5
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 0
-    - _SphericalHarmonics: 0
-    - _SrcBlend: 1
-    - _Stencil: 0
-    - _StencilComparison: 0
-    - _StencilOperation: 0
-    - _StencilReference: 0
-    - _TriplanarMappingBlendSharpness: 4
-    - _UVSec: 0
-    - _VertexColors: 0
-    - _VertexExtrusion: 0
-    - _VertexExtrusionSmoothNormals: 0
-    - _VertexExtrusionValue: 0
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 4
-    - _ZWrite: 0
-    m_Colors:
-    - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}
-    - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}
-    - _EnvironmentColorZ: {r: 0, g: 0, b: 1, a: 1}
-    - _HoverColorOverride: {r: 1, g: 1, b: 1, a: 1}
-    - _InnerGlowColor: {r: 1, g: 1, b: 1, a: 0.75}
-    - _ProximityLightCenterColorOverride: {r: 1, g: 0, b: 0, a: 0}
-    - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
-    - _ProximityLightOuterColorOverride: {r: 0, g: 0, b: 1, a: 1}
-    - _RimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _RoundCornersRadius: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-  m_BuildTextureStacks: []
 --- !u!1 &1466451453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,7 +1829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1771652396}
   - component: {fileID: 1771652397}
-  - component: {fileID: 1771652398}
   m_Layer: 0
   m_Name: UIADataHandler
   m_TagString: Untagged
@@ -2044,31 +1876,6 @@ MonoBehaviour:
       eva2_water_waste: 0
       oxy_vent: 0
       depress: 0
---- !u!114 &1771652398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771652395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85b8f7691bf24677ad01dce229e3ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TSS: {fileID: 0}
-  uiaWrapper:
-    uia:
-      eva1_power: 0
-      eva1_oxy: 0
-      eva1_water_supply: 0
-      eva1_water_waste: 0
-      eva2_power: 0
-      eva2_oxy: 0
-      eva2_water_supply: 0
-      eva2_water_waste: 0
-      oxy_vent: 0
-      depress: 0
 --- !u!1 &1824648150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +1885,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1824648151}
-  - component: {fileID: 1824648152}
   m_Layer: 0
   m_Name: EVTData
   m_TagString: Untagged
@@ -2102,20 +1908,190 @@ Transform:
   - {fileID: 1318081978}
   m_Father: {fileID: 2313261133327465260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824648152
-MonoBehaviour:
+--- !u!21 &2071812216
+Material:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824648150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57712bf456c4e5c4082f2ebd804f2318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TELEMETRYDataHandler: {fileID: 274463021}
-  telemetryText: {fileID: 1318081979}
+  m_Name: MixedRealityKeyboardPreviewCaret (Instance)
+  m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  - _CLIPPING_BOX
+  - _DISABLE_ALBEDO_MAP
+  - _IGNORE_Z_SCALE
+  - _ROUND_CORNERS
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Fade
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ChannelMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IridescentSpectrumMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbedoAlphaMode: 0
+    - _AlbedoAssignedAtRuntime: 0
+    - _BlendOp: 0
+    - _BlendedClippingWidth: 0
+    - _BorderLight: 0
+    - _BorderLightOpaque: 0
+    - _BorderLightOpaqueAlpha: 1
+    - _BorderLightReplacesAlbedo: 0
+    - _BorderLightUsesHoverColor: 0
+    - _BorderMinValue: 0.1
+    - _BorderWidth: 0.1
+    - _BumpScale: 1
+    - _ClippingBorder: 0
+    - _ClippingBorderWidth: 0.025
+    - _ColorWriteMask: 15
+    - _CullMode: 2
+    - _CustomMode: 2
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DirectionalLight: 0
+    - _DstBlend: 10
+    - _EdgeSmoothingValue: 0.00008
+    - _EnableChannelMap: 0
+    - _EnableEmission: 0
+    - _EnableHoverColorOverride: 0
+    - _EnableLocalSpaceTriplanarMapping: 0
+    - _EnableNormalMap: 0
+    - _EnableProximityLightColorOverride: 0
+    - _EnableSSAA: 0
+    - _EnableTriplanarMapping: 0
+    - _EnvironmentColorIntensity: 0.5
+    - _EnvironmentColorThreshold: 1.5
+    - _EnvironmentColoring: 0
+    - _FadeBeginDistance: 0.85
+    - _FadeCompleteDistance: 0.5
+    - _FadeMinValue: 0
+    - _FluentLightIntensity: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HoverLight: 0
+    - _IgnoreZScale: 1
+    - _IndependentCorners: 0
+    - _InnerGlow: 0
+    - _InnerGlowPower: 4
+    - _InstancedColor: 0
+    - _Iridescence: 0
+    - _IridescenceAngle: -0.78
+    - _IridescenceIntensity: 0.5
+    - _IridescenceThreshold: 0.05
+    - _Metallic: 0
+    - _MipmapBias: -2
+    - _Mode: 3
+    - _NearLightFade: 0
+    - _NearPlaneFade: 0
+    - _NormalMapScale: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _ProximityLight: 0
+    - _ProximityLightSubtractive: 0
+    - _ProximityLightTwoSided: 0
+    - _Reflections: 0
+    - _Refraction: 0
+    - _RefractiveIndex: 0
+    - _RenderQueueOverride: -1
+    - _RimLight: 0
+    - _RimPower: 0.25
+    - _RoundCornerMargin: 0.123
+    - _RoundCornerRadius: 0.5
+    - _RoundCorners: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 0
+    - _SphericalHarmonics: 0
+    - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComparison: 0
+    - _StencilOperation: 0
+    - _StencilReference: 0
+    - _TriplanarMappingBlendSharpness: 4
+    - _UVSec: 0
+    - _VertexColors: 0
+    - _VertexExtrusion: 0
+    - _VertexExtrusionSmoothNormals: 0
+    - _VertexExtrusionValue: 0
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}
+    - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}
+    - _EnvironmentColorZ: {r: 0, g: 0, b: 1, a: 1}
+    - _HoverColorOverride: {r: 1, g: 1, b: 1, a: 1}
+    - _InnerGlowColor: {r: 1, g: 1, b: 1, a: 0.75}
+    - _ProximityLightCenterColorOverride: {r: 1, g: 0, b: 0, a: 0}
+    - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
+    - _ProximityLightOuterColorOverride: {r: 0, g: 0, b: 1, a: 1}
+    - _RimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _RoundCornersRadius: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []
 --- !u!1 &2125787505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,8 +2101,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125787506}
+  - component: {fileID: 2125787507}
   m_Layer: 0
-  m_Name: EVTHandlers
+  m_Name: LaunchMenuHandlers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2140,13 +2117,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125787505}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.23094998, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2313261133327465260}
+  m_Father: {fileID: 478417034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125787507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125787505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef36262367c1ad64393e1816d43da6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSSc: {fileID: 92864883}
+  InputFieldUrl: {fileID: 470763196779847850}
+  ConnectButton: {fileID: 0}
+  objectsToActivate: []
+  objectToDeactivate: {fileID: 478417033}
+  deactivationDelay: 1
+  connectionTimeout: 5
 --- !u!4 &14846443112751575
 Transform:
   m_ObjectHideFlags: 0
@@ -7363,7 +7359,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 690330377}
   - {fileID: 1759832698505855506}
   m_Father: {fileID: 283318633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7393,7 +7388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55691ad5b034fe6966763a6e23818d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedTargetType: 6
+  trackedTargetType: 0
   trackedHandedness: 1
   trackedHandJoint: 2
   transformOverride: {fileID: 0}
@@ -7754,6 +7749,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 690330377}
   - {fileID: 1759832697480999525}
   - {fileID: 6818696551727254940}
   m_Father: {fileID: 1759832698111255651}
@@ -10798,7 +10794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2125787506}
+  - {fileID: 1222789788}
   - {fileID: 6013460646730217070}
   - {fileID: 381806469615865078}
   - {fileID: 263290957225225677}
@@ -11178,7 +11174,7 @@ GameObject:
   - component: {fileID: 2555379631278799819}
   - component: {fileID: 470763196779847850}
   m_Layer: 0
-  m_Name: InputText
+  m_Name: TSSServerAddressInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11836,7 +11832,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1376246532}
+  - {fileID: 2071812216}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18964,8 +18960,8 @@ Transform:
   m_GameObject: {fileID: 3858378578313981386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06905, y: -0.03391, z: 0}
-  m_LocalScale: {x: 0.0934992, y: 0.15642913, z: 0.010599999}
+  m_LocalPosition: {x: 0.05171, y: -0.00528, z: 0}
+  m_LocalScale: {x: 0.15076347, y: 0.21369314, z: 0.010599999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6013460646730217070}
@@ -22233,8 +22229,8 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 92864884}
-        m_TargetAssemblyTypeName: TSScUI, Assembly-CSharp
+      - m_Target: {fileID: 2125787507}
+        m_TargetAssemblyTypeName: LaunchMenu, Assembly-CSharp
         m_MethodName: Connect_Button
         m_Mode: 1
         m_Arguments:
