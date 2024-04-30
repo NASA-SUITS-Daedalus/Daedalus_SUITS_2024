@@ -25,24 +25,25 @@ public class StepDisplayManager : MonoBehaviour
         // Set the initial step display text
         UpdateStepDisplay(currentStepIndex);
 
-        // Start the coroutine to automatically change steps
+        // Start the coroutine to automatically change steps disable when using hand menu.
         // StartCoroutine(ChangeStepsAutomatically());
     }
 
-    // private IEnumerator ChangeStepsAutomatically()
-    // {
-    //     while (true)
-    //     {
-    //         // Wait for the specified step duration
-    //         yield return new WaitForSeconds(stepDuration);
+    private IEnumerator ChangeStepsAutomatically()
+    {
+        while (true)
+        {
+            // Wait for the specified step duration
+            yield return new WaitForSeconds(stepDuration);
 
-    //         // Move to the next step
-    //         currentStepIndex = (currentStepIndex + 1) % stepInstructions.Length;
+            // Move to the next step
+            currentStepIndex = (currentStepIndex + 1) % stepInstructions.Length;
 
-    //         // Update the step display
-    //         UpdateStepDisplay(currentStepIndex);
-    //     }
-    // }
+            // Update the step display
+            UpdateStepDisplay(currentStepIndex);
+        }
+    }
+
 
     public void UpdateStepDisplay(int stepIndex)
     {
@@ -54,9 +55,6 @@ public class StepDisplayManager : MonoBehaviour
 
         // Update the step display text
         stepDisplayText.text = stepInstructions[currentStepIndex];
-
-        Debug.Log($"Current Step: {currentStepIndex}");
-        Debug.Log($"Step Instructions: {stepDisplayText.text}");
 
         // Check if it's the sample collection step (Step 5)
         if (currentStepIndex == 4)
@@ -72,11 +70,8 @@ public class StepDisplayManager : MonoBehaviour
             }
             else
             {
-                stepDisplayText.text = "Step 5: Do not collect this sample.";
+                stepDisplayText.text = "Step 5: Do not collect this sample. All elements within normal range";
             }
-
-            Debug.Log($"Should Collect Sample: {shouldCollect}");
-            Debug.Log($"Step Instructions: {stepDisplayText.text}");
         }
     }
 
@@ -94,8 +89,6 @@ public class StepDisplayManager : MonoBehaviour
         float p2o3 = specDataHandler.GetCompoundData("eva1", "P2O3");
         float other = specDataHandler.GetCompoundData("eva1", "other");
 
-        Debug.Log($"XRF Scan Data - SiO2: {sio2}, TiO2: {tio2}, Al2O3: {al2o3}, FeO: {feo}, MnO: {mno}, MgO: {mgo}, CaO: {cao}, K2O: {k2o}, P2O3: {p2o3}, Other: {other}");
-
         // Perform analysis based on the XRF scan data
         bool shouldCollect = false;
 
@@ -109,6 +102,7 @@ public class StepDisplayManager : MonoBehaviour
 
     private string GetOutOfRangeElement()
     {
+        
         // Retrieve the XRF scan data from the SPECDataHandler
         float sio2 = specDataHandler.GetCompoundData("eva1", "SiO2");
         float tio2 = specDataHandler.GetCompoundData("eva1", "TiO2");
@@ -133,17 +127,16 @@ public class StepDisplayManager : MonoBehaviour
         if (p2o3 > 1.5f) return "P2O3";
         if (other > 50) return "Other";
 
-        Debug.Log($"No element is out of range.");
         return string.Empty;
     }
 
-    public void OnPreviousStepVoiceCommand()
+    public void OnPreviousStepButtonClicked()
     {
         // Move to the previous step
         UpdateStepDisplay(currentStepIndex - 1);
     }
 
-    public void OnNextStepVoiceCommand()
+    public void OnNextStepButtonClicked()
     {
         // Move to the next step
         UpdateStepDisplay(currentStepIndex + 1);
