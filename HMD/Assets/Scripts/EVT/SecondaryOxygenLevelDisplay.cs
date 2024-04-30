@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class OxygenLevelDisplay : MonoBehaviour
+public class SecondaryOxygenLevelDisplay : MonoBehaviour
 {
     public TELEMETRYDataHandler telemetryDataHandler;
     public DataRanges dataRanges;
@@ -9,6 +9,7 @@ public class OxygenLevelDisplay : MonoBehaviour
     public Transform foreground;
     public TextMeshPro oxygenLevelTextMeshPro;
     public Color normalColor = Color.green;
+    public Color warningColor = Color.yellow;
     public Color criticalColor = Color.red;
 
     private void Update()
@@ -18,7 +19,7 @@ public class OxygenLevelDisplay : MonoBehaviour
 
     private void UpdateOxygenLevel()
     {
-        float oxygenLevel = telemetryDataHandler.GetOxyPriStorage("eva1");
+        float oxygenLevel = telemetryDataHandler.GetOxySecStorage("eva1");
 
         // Calculate the progress based on the oxygen level and data ranges
         float progress = Mathf.Clamp01((oxygenLevel - (float)dataRanges.oxy_pri_storage.Min) / (float)(dataRanges.oxy_pri_storage.Max - dataRanges.oxy_pri_storage.Min));
@@ -29,10 +30,14 @@ public class OxygenLevelDisplay : MonoBehaviour
         // Update the oxygen level text
         oxygenLevelTextMeshPro.text = $"{oxygenLevel:F0}%";
 
-        // Change the color of the bar if it enters the critical zone
-        if (oxygenLevel < 50f)
+        // Change the color of the bar based on the oxygen level
+        if (oxygenLevel < 30f)
         {
             foreground.GetComponent<Renderer>().material.color = criticalColor;
+        }
+        else if (oxygenLevel < 60f)
+        {
+            foreground.GetComponent<Renderer>().material.color = warningColor;
         }
         else
         {
@@ -55,7 +60,6 @@ public class OxygenLevelDisplay : MonoBehaviour
         Vector3 foregroundPosition = foreground.localPosition;
         Vector3 backgroundPosition = background.localPosition;
         float leftPivot = backgroundPosition.x - backgroundScale.x * 0.5f;
-
         foregroundPosition.x = leftPivot + foregroundScale.x * 0.5f;
 
         // Update foreground local position
