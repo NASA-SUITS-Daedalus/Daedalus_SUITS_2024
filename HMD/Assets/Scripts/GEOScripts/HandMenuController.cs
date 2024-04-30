@@ -17,4 +17,9 @@ public class HandMenuController : MonoBehaviour
         // Call the method in StepDisplayManager to move to the next step
         stepDisplayManager.OnNextStepButtonClicked();
     }
+    public void OnRestartButtonClicked()
+    {
+        // Call the method in StepDisplayManager to move to the next step
+        stepDisplayManager.OnRestartButtonClicked();
+    }
 }
