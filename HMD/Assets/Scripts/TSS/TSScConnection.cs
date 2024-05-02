@@ -349,7 +349,8 @@ public class TSScConnection : MonoBehaviour
         return IMUUpdated;
     }
 
-
-
-
+    public bool IsConnected()
+    {
+        return this.connected;
+    }
 }
