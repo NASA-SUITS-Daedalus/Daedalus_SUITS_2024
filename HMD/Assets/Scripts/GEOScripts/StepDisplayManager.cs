@@ -12,7 +12,7 @@ public class StepDisplayManager : MonoBehaviour
     public Color doNotCollectColor = Color.red;
 
     // Dummy variable to store the EVA number (replace with the actual script later)
-    public int evaNumber = 1;
+    public EVANumberHandler EVAnum;
 
     private string[] stepInstructions = new string[]
     {
@@ -196,7 +196,7 @@ public class StepDisplayManager : MonoBehaviour
     }
     private float GetCompoundData(string compound)
     {
-        string eva = (evaNumber == 1) ? "eva1" : "eva2";
+        string eva = (EVAnum.getEVANumber() == 1) ? "eva1" : "eva2";
         return specDataHandler.GetCompoundData(eva, compound);
     }
 

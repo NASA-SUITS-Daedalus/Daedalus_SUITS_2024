@@ -5,8 +5,17 @@ using System.Collections;
 
 public class LaunchMenu : MonoBehaviour
 {
+    public Color selectedColor = Color.green;
+    public Color unselectedColor = Color.white;
+
+    public TextMeshPro EV1Text;
+
+    public TextMeshPro EV2Text;
+
     // TSSc Connection
     public TSScConnection TSSc;
+
+    public EVANumberHandler EVAnum;
 
     // UI Input
     public TMP_Text InputFieldUrl;
@@ -28,7 +37,16 @@ public class LaunchMenu : MonoBehaviour
     {
         ConnectButton.onClick.AddListener(Connect_Button);
     }
-
+    public void EV1_Pressed()
+    {
+        EV1Text.text = $"<color=#{ColorUtility.ToHtmlStringRGBA(selectedColor)}>EV1";
+        EV2Text.text = $"<color=#{ColorUtility.ToHtmlStringRGBA(unselectedColor)}>EV2";
+    }
+    public void EV2_Pressed()
+    {
+        EV2Text.text = $"<color=#{ColorUtility.ToHtmlStringRGBA(selectedColor)}>EV2";
+        EV1Text.text = $"<color=#{ColorUtility.ToHtmlStringRGBA(unselectedColor)}>EV1";
+    }
     // On Connect Button Press
     public void Connect_Button()
     {
@@ -60,11 +78,16 @@ public class LaunchMenu : MonoBehaviour
         // Check if the connection is successful
         if (TSSc.IsConnected())
         {
+            while (EVAnum.getEVANumber() == 0)
+            {
+                yield return null;
+            }
             // Start a coroutine to deactivate the object after a delay
             StartCoroutine(DeactivateObjectDelayed());
 
             // Activate the array of game objects
             ActivateObjects();
+            
         }
         else
         {
