@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Microsoft.MixedReality.Toolkit.UI;
+using System.Collections;
 
-public class TSScUI : Interactable
+public class LaunchMenu : MonoBehaviour
 {
     // TSSc Connection
     public TSScConnection TSSc;
@@ -15,7 +13,7 @@ public class TSScUI : Interactable
     public Button ConnectButton;
 
     // Reference to the game objects you want to activate
-    public List<GameObject> objectsToActivate;
+    public GameObject[] objectsToActivate;
 
     // Reference to the game object you want to deactivate
     public GameObject objectToDeactivate;
@@ -23,16 +21,12 @@ public class TSScUI : Interactable
     // Delay in seconds before deactivating the object
     public float deactivationDelay = 1.0f;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        OnClick.AddListener(Connect_Button);
-    }
+    // Maximum time to wait for the connection (in seconds)
+    public float connectionTimeout = 5.0f;
 
-    protected override void OnDisable()
+    private void Start()
     {
-        base.OnDisable();
-        OnClick.RemoveListener(Connect_Button);
+        ConnectButton.onClick.AddListener(Connect_Button);
     }
 
     // On Connect Button Press
@@ -40,7 +34,6 @@ public class TSScUI : Interactable
     {
         // Get URL in Text Field
         string host = InputFieldUrl.text;
-
         host = "127.0.0.1";
 
         // Print Hostname to Logs
@@ -49,11 +42,34 @@ public class TSScUI : Interactable
         // Connect to TSSc at that Host
         TSSc.ConnectToHost(host, 6);
 
-        // Start a coroutine to deactivate the object after a delay
-        StartCoroutine(DeactivateObjectDelayed());
+        // Start a coroutine to wait for the connection and deactivate the object
+        StartCoroutine(WaitForConnectionAndDeactivate());
+    }
 
-        // Activate the list of game objects
-        ActivateObjects();
+    IEnumerator WaitForConnectionAndDeactivate()
+    {
+        float elapsedTime = 0f;
+
+        // Wait until the connection is established or the timeout is reached
+        while (!TSSc.IsConnected() && elapsedTime < connectionTimeout)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Check if the connection is successful
+        if (TSSc.IsConnected())
+        {
+            // Start a coroutine to deactivate the object after a delay
+            StartCoroutine(DeactivateObjectDelayed());
+
+            // Activate the array of game objects
+            ActivateObjects();
+        }
+        else
+        {
+            Debug.Log("Connection failed. Object will not be deactivated.");
+        }
     }
 
     IEnumerator DeactivateObjectDelayed()
@@ -70,7 +86,7 @@ public class TSScUI : Interactable
 
     void ActivateObjects()
     {
-        // Loop through the list of game objects and activate each one
+        // Loop through the array of game objects and activate each one
         foreach (GameObject obj in objectsToActivate)
         {
             obj.SetActive(true);
