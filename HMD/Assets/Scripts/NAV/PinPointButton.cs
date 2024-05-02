@@ -18,7 +18,7 @@ namespace Microsoft.MixedReality.Toolkit.UI
             if (pinPointIconPrefab != null && spawnTransform != null)
             {
                 // Calculate the spawn position
-                Vector3 spawnPosition = spawnTransform.position + (spawnTransform.TransformDirection(Vector3.forward) * 1.5f) + (spawnTransform.TransformDirection(Vector3.down) * 0.2f);
+                Vector3 spawnPosition = spawnTransform.position + (spawnTransform.TransformDirection(Vector3.forward) * 1.5f) + (spawnTransform.TransformDirection(Vector3.up) * 0.4f);
 
                 // Instantiate the prefab with the calculated spawn position and upright rotation
                 Instantiate(pinPointIconPrefab, spawnPosition, Quaternion.identity);
