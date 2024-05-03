@@ -149,11 +149,11 @@ Transform:
   m_GameObject: {fileID: 9026449}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1099052495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9026451
 SpriteRenderer:
@@ -322,11 +322,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1099052495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.020130008, y: 0.029699992}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.015, y: 0.015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77540779
@@ -505,11 +505,11 @@ Transform:
   m_GameObject: {fileID: 81812322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1638860569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &81812324
 SpriteRenderer:
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 111615179}
   - component: {fileID: 111615178}
   m_Layer: 0
-  m_Name: EV2ForegroundBar
+  m_Name: EgressEV2ForegroundBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,11 +700,15 @@ Transform:
   m_GameObject: {fileID: 120880430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: -0.020130008, y: 0.039999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Children:
+  - {fileID: 1678362223}
+  - {fileID: 958188509}
+  - {fileID: 1099052495}
+  - {fileID: 731830996}
+  m_Father: {fileID: 1592321629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &120880432
 MonoBehaviour:
@@ -1206,7 +1210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141802574}
   m_Layer: 0
-  m_Name: TaskStatus
+  m_Name: EgressTaskStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,7 +1244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 186748561}
   m_Layer: 0
-  m_Name: EV1ProgressBar
+  m_Name: EgressEV1ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,11 +1299,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1099052495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.020130008, y: 0.018799989}
+  m_AnchoredPosition: {x: 0, y: -0.0109}
   m_SizeDelta: {x: 0.032, y: 0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211440385
@@ -1474,26 +1478,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 728045697}
-  - {fileID: 24482935}
   - {fileID: 1592321629}
-  - {fileID: 120880431}
-  - {fileID: 1678362223}
-  - {fileID: 958188509}
-  - {fileID: 731830996}
-  - {fileID: 1099052495}
-  - {fileID: 211440384}
-  - {fileID: 1297780708}
-  - {fileID: 77540778}
-  - {fileID: 9026450}
-  - {fileID: 436419164}
-  - {fileID: 1305684189}
-  - {fileID: 1919718290}
-  - {fileID: 1475157430}
-  - {fileID: 1638860569}
-  - {fileID: 1729264596}
-  - {fileID: 543139052}
-  - {fileID: 395458737}
-  - {fileID: 81812323}
+  - {fileID: 24482935}
   m_Father: {fileID: 383717479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &265463377
@@ -1780,7 +1766,7 @@ GameObject:
   - component: {fileID: 356226810}
   - component: {fileID: 356226809}
   m_Layer: 0
-  m_Name: EV1BackgroundBar
+  m_Name: EgressEV1BackgroundBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,11 +2204,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1638860569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.029870003, y: 0.029699992}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.015, y: 0.015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395458738
@@ -2407,11 +2393,15 @@ Transform:
   m_GameObject: {fileID: 436419163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0.029870003, y: 0.039999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Children:
+  - {fileID: 1638860569}
+  - {fileID: 1475157430}
+  - {fileID: 1305684189}
+  - {fileID: 1919718290}
+  m_Father: {fileID: 1592321629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436419165
 MonoBehaviour:
@@ -2930,11 +2920,11 @@ Transform:
   m_GameObject: {fileID: 543139051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1638860569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &543139053
 MeshRenderer:
@@ -3185,7 +3175,7 @@ GameObject:
   - component: {fileID: 698479170}
   - component: {fileID: 698479172}
   m_Layer: 0
-  m_Name: StepTitleText
+  m_Name: EgressStepTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3589,13 +3579,13 @@ Transform:
   m_GameObject: {fileID: 731830995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.008699991, z: -0.009000003}
+  m_LocalPosition: {x: 0, y: -0.021000002, z: -0.009000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078452773}
   - {fileID: 623972312}
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 120880431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787725546
 GameObject:
@@ -3607,7 +3597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787725547}
   m_Layer: 0
-  m_Name: TaskText
+  m_Name: EgressTaskText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,7 +3722,7 @@ GameObject:
   - component: {fileID: 939937285}
   - component: {fileID: 939937287}
   m_Layer: 0
-  m_Name: TaskStatusMenu
+  m_Name: EgressTaskStatusMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3987,12 +3977,12 @@ Transform:
   m_GameObject: {fileID: 958188508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0.008000016}
+  m_LocalPosition: {x: 0, y: 0, z: 0.008000016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1467080347}
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 120880431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &964588762
 GameObject:
@@ -4071,7 +4061,7 @@ GameObject:
   - component: {fileID: 997715120}
   - component: {fileID: 997715119}
   m_Layer: 0
-  m_Name: EV1ForegroundBar
+  m_Name: EgressEV1ForegroundBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4621,11 +4611,15 @@ Transform:
   m_GameObject: {fileID: 1099052494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Children:
+  - {fileID: 1297780708}
+  - {fileID: 211440384}
+  - {fileID: 77540778}
+  - {fileID: 9026450}
+  m_Father: {fileID: 120880431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171451208
 GameObject:
@@ -4781,7 +4775,7 @@ GameObject:
   - component: {fileID: 1225145045}
   - component: {fileID: 1225145043}
   m_Layer: 0
-  m_Name: TaskStatusText
+  m_Name: EgressTaskStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4975,11 +4969,11 @@ Transform:
   m_GameObject: {fileID: 1297780707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1099052495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!23 &1297780709
 MeshRenderer:
@@ -5056,11 +5050,11 @@ Transform:
   m_GameObject: {fileID: 1305684188}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 436419164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1323517110
 GameObject:
@@ -5407,13 +5401,13 @@ Transform:
   m_GameObject: {fileID: 1475157429}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.008699991, z: -0.009000003}
+  m_LocalPosition: {x: 0, y: -0.021000002, z: -0.009000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1323517111}
   - {fileID: 987462878}
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 436419164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1526130037
 GameObject:
@@ -5720,7 +5714,9 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.010300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 120880431}
+  - {fileID: 436419164}
   m_Father: {fileID: 261934544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1592321630
@@ -5814,7 +5810,7 @@ GameObject:
   - component: {fileID: 1608571002}
   - component: {fileID: 1608571004}
   m_Layer: 0
-  m_Name: EV1ProgressText
+  m_Name: EgerssEV1ProgressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6100,11 +6096,15 @@ Transform:
   m_GameObject: {fileID: 1638860568}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Children:
+  - {fileID: 543139052}
+  - {fileID: 1729264596}
+  - {fileID: 395458737}
+  - {fileID: 81812323}
+  m_Father: {fileID: 436419164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1668448591
 GameObject:
@@ -6119,7 +6119,7 @@ GameObject:
   - component: {fileID: 1668448594}
   - component: {fileID: 1668448593}
   m_Layer: 0
-  m_Name: EV2BackgroundBar
+  m_Name: EgressEV2BackgroundBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6236,11 +6236,11 @@ Transform:
   m_GameObject: {fileID: 1678362222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020130008, y: 0.029699992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 120880431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1729264595
 GameObject:
@@ -6273,11 +6273,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 1638860569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.029870003, y: 0.018799989}
+  m_AnchoredPosition: {x: 0, y: -0.0109}
   m_SizeDelta: {x: 0.032, y: 0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729264597
@@ -6671,7 +6671,7 @@ GameObject:
   - component: {fileID: 1849841921}
   - component: {fileID: 1849841920}
   m_Layer: 0
-  m_Name: EV2ProgressText
+  m_Name: EgressEV2ProgressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6851,7 +6851,7 @@ GameObject:
   - component: {fileID: 1893455678}
   - component: {fileID: 1893455676}
   m_Layer: 0
-  m_Name: TaskText
+  m_Name: EgressTaskText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7043,12 +7043,12 @@ Transform:
   m_GameObject: {fileID: 1919718289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029870003, y: 0.029699992, z: 0.008000016}
+  m_LocalPosition: {x: 0, y: 0, z: 0.008000016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 654222605}
-  m_Father: {fileID: 261934544}
+  m_Father: {fileID: 436419164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2029178170
 GameObject:
@@ -7226,7 +7226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2054325990}
   m_Layer: 0
-  m_Name: EV2ProgressBar
+  m_Name: EgressEV2ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
