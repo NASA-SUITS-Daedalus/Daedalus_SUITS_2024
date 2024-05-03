@@ -6357,7 +6357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pinPointIconPrefab: {fileID: 8605146199709581936, guid: 7b6118447577e0f4992aff720d98cafc, type: 3}
-  hazardPinPrefab: {fileID: 0}
+  hazardPinPrefab: {fileID: 8605146199709581936, guid: bcd484388e6355e42b055c201df347bf, type: 3}
   spawnTransform: {fileID: 1756103108}
   onGeneralPinClick:
     m_PersistentCalls:
@@ -23346,7 +23346,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1870630396}
         m_TargetAssemblyTypeName: Microsoft.MixedReality.Toolkit.UI.PinPointButton,
           Assembly-CSharp
-        m_MethodName: DropGeneralPin
+        m_MethodName: OnGeneralPinButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23546,10 +23546,10 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1870630396}
         m_TargetAssemblyTypeName: Microsoft.MixedReality.Toolkit.UI.PinPointButton,
           Assembly-CSharp
-        m_MethodName: ActivateHazardPinMode
+        m_MethodName: OnHazardPinButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
