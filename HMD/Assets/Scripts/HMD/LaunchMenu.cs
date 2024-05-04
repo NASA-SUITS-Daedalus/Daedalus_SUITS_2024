@@ -19,7 +19,6 @@ public class LaunchMenu : MonoBehaviour
 
     // UI Input
     public TMP_Text InputFieldUrl;
-    public Button ConnectButton;
 
     // Reference to the game objects you want to activate
     public GameObject[] objectsToActivate;
@@ -35,7 +34,6 @@ public class LaunchMenu : MonoBehaviour
 
     private void Start()
     {
-        ConnectButton.onClick.AddListener(Connect_Button);
     }
     public void EV1_Pressed()
     {

@@ -12,6 +12,9 @@ public class SecondaryOxygenLevelDisplay : MonoBehaviour
     public Color warningColor = Color.yellow;
     public Color criticalColor = Color.red;
 
+    // This script allows us to get current EVA Number
+    public EVANumberHandler evaNumberHandler;
+
     private void Update()
     {
         UpdateOxygenLevel();
@@ -19,7 +22,10 @@ public class SecondaryOxygenLevelDisplay : MonoBehaviour
 
     private void UpdateOxygenLevel()
     {
-        float oxygenLevel = telemetryDataHandler.GetOxySecStorage("eva1");
+        int evaNumber = evaNumberHandler.getEVANumber();
+        string evaKey = $"eva{evaNumber}";
+
+        float oxygenLevel = telemetryDataHandler.GetOxySecStorage(evaKey);
 
         // Calculate the progress based on the oxygen level and data ranges
         float progress = Mathf.Clamp01((oxygenLevel - (float)dataRanges.oxy_pri_storage.Min) / (float)(dataRanges.oxy_pri_storage.Max - dataRanges.oxy_pri_storage.Min));

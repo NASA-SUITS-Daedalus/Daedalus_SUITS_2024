@@ -5,6 +5,7 @@ public class OxygenTimeLeftDisplay : MonoBehaviour
 {
     public TELEMETRYDataHandler telemetryDataHandler;
     public TextMeshPro oxygenTimeLeftTextMeshPro;
+    public EVANumberHandler evaNumberHandler;
 
     private void Update()
     {
@@ -13,7 +14,10 @@ public class OxygenTimeLeftDisplay : MonoBehaviour
 
     private void UpdateOxygenTimeLeft()
     {
-        float oxygenTimeLeft = telemetryDataHandler.GetOxyTimeLeft("eva1");
+        int evaNumber = evaNumberHandler.getEVANumber();
+        string evaKey = $"eva{evaNumber}";
+
+        float oxygenTimeLeft = telemetryDataHandler.GetOxyTimeLeft(evaKey);
 
         // Format the time as HH:MM:SS
         string formattedTime = FormatTime(oxygenTimeLeft);
