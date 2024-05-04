@@ -87,7 +87,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.batt;
         }
         else
@@ -103,7 +102,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.oxy;
         }
         else
@@ -119,7 +117,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.comm;
         }
         else
@@ -135,7 +132,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.fan;
         }
         else
@@ -151,7 +147,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.pump;
         }
         else
@@ -167,7 +162,6 @@ void Update()
             // Check which EVA data is requested
             DCUEvaData evaData = (eva == "eva1") ? dcuWrapper.dcu.eva1 : dcuWrapper.dcu.eva2;
 
-            // Access the heart rate
             return evaData.co2;
         }
         else
