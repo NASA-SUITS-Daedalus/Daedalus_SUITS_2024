@@ -53,10 +53,10 @@ public class LaunchMenu : MonoBehaviour
 
         // Use this to HARDCODE the server address
         // If you are using remote server,
-        // host = "168.4.185.194";
+        host = "168.4.185.194";
 
         // If you are using local server,
-        host = "127.0.0.1";
+        // host = "127.0.0.1";
 
         // Print Hostname to Logs
         Debug.Log("Button Pressed: " + host);
