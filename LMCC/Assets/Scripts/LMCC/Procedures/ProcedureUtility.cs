@@ -48,7 +48,7 @@ public class ProcedureUtility : MonoBehaviour
     /*
      * Format a pressure measurement as an easily readable string. 
      */
-    public string formatPressure(float pressure=0f, int places = 1)
+    public string formatPressure(float pressure=0f)
     {
         return string.Format("{0:0.0#}", pressure) + " psi";
     }
@@ -56,9 +56,17 @@ public class ProcedureUtility : MonoBehaviour
     /*
      * Format a float as an easily readable percentage. 
      */
-    public string formatPercentage(float value=0f, int places = 1)
+    public string formatPercentage(float value=0f)
     {
         return string.Format("{0:0.0#}", value) + "%";
+    }
+
+    /*
+     * Format a float as an easily readable capacity level (mL.
+     */
+    public string formatCapacity(float value=0f)
+    {
+        return string.Format("{0:0.0#}", value) + " mL";
     }
 
 
@@ -85,13 +93,13 @@ public class ProcedureUtility : MonoBehaviour
     }
 
     /*
-     * Format the DCU communications status as an easily readable string. 
+     * Format the DCU communications channel as an easily readable string. 
      */
     public string formatDCUComms(bool status = true)
     {
         // TODO check to see if this is correct
-        if (status) { return "A"; }
-        else { return "-"; }
+        if (status) { return "COM-A"; }
+        else { return "COM-B"; }
     }
 
     /*

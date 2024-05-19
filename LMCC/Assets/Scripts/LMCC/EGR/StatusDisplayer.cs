@@ -35,7 +35,13 @@ public class StatusDisplayer : MonoBehaviour
     public TextMeshProUGUI uiaReadings;
 
     // The telemetry data receiver
-    public TELEMETRYDataHandler data;
+    public TELEMETRYDataHandler teleData;
+
+    // The UIA data receiver
+    public UIADataHandler uiaData;
+
+    // The DCU data receiver
+    public DCUDataHandler dcuData;
 
     // Formatter helper
     public ProcedureUtility helper;
@@ -58,29 +64,55 @@ public class StatusDisplayer : MonoBehaviour
     // Update EVA-specific readings
     void updateEVAReadings(string eva, TextMeshProUGUI readingsText)
     {
-        // TODO actually get the TSS data
-        readingsText.text = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}",
-            helper.formatSwitch(true),
-            helper.formatPressure(0),
-            helper.formatPercentage(0),
-            helper.formatPercentage(0),
-            helper.formatDCUBatt(true),
-            helper.formatDCUOxy(false),
-            helper.formatDCUComms(true),
-            helper.formatDCUFan(true),
-            helper.formatDCUPump(false),
-            helper.formatDCUCO2(true)
-            ) ; 
+        try
+        {
+            readingsText.text = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}",
+                helper.formatSwitch(uiaData.GetPower(eva)),
+                helper.formatPressure(teleData.GetOxyPriPressure(eva)),
+                helper.formatPressure(teleData.GetOxySecPressure(eva)),
+                helper.formatCapacity(teleData.GetCoolantMl(eva)),
+                helper.formatDCUBatt(dcuData.GetBatt(eva)),
+                helper.formatDCUOxy(dcuData.GetOxy(eva)),
+                helper.formatDCUComms(dcuData.GetComm(eva)),
+                helper.formatDCUFan(dcuData.GetFan(eva)),
+                helper.formatDCUPump(dcuData.GetPump(eva)),
+                helper.formatDCUCO2(dcuData.GetCO2(eva))
+                );
+        }
+        catch
+        {
+            readingsText.text = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}",
+                helper.formatSwitch(false),
+                helper.formatPressure(0f),
+                helper.formatPressure(0f),
+                helper.formatCapacity(0),
+                helper.formatDCUBatt(true),
+                helper.formatDCUOxy(false),
+                helper.formatDCUComms(true),
+                helper.formatDCUFan(true),
+                helper.formatDCUPump(false),
+                helper.formatDCUCO2(true)
+                ) ; 
+        }
+
     }
 
     // Update UIA readings
     void updateUIAReadings()
     {
-        // TODO actually get the TSS data
-        uiaReadings.text = string.Format("{0}\n{1}",
+        try
+        {
+            uiaReadings.text = string.Format("{0}\n{1}",
+            helper.formatSwitch(uiaData.GetOxy_Vent()),
+            helper.formatSwitch(uiaData.GetDepress())
+            );
+        }
+        catch {
+            uiaReadings.text = string.Format("{0}\n{1}",
             helper.formatSwitch(false),
             helper.formatSwitch(false)
             );
+        }
     }
 
     void display(Button buttonObject, Button otherButtonObject1, Button otherButtonObject2,

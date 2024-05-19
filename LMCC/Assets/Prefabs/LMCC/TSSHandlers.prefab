@@ -1,0 +1,367 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &303359870108748408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6487160544759682024}
+  - component: {fileID: 3840141646985380768}
+  m_Layer: 0
+  m_Name: SPECDataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6487160544759682024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303359870108748408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2731903720684937201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3840141646985380768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303359870108748408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f26db449121f94a8a78b93289e7a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 1798017685689096700}
+  specWrapper:
+    spec:
+      eva1:
+        name: 
+        id: 0
+        data:
+          SiO2: 0
+          TiO2: 0
+          Al2O3: 0
+          FeO: 0
+          MnO: 0
+          MgO: 0
+          CaO: 0
+          K2O: 0
+          P2O3: 0
+          other: 0
+      eva2:
+        name: 
+        id: 0
+        data:
+          SiO2: 0
+          TiO2: 0
+          Al2O3: 0
+          FeO: 0
+          MnO: 0
+          MgO: 0
+          CaO: 0
+          K2O: 0
+          P2O3: 0
+          other: 0
+--- !u!1 &1011470915469227032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5721644233720036532}
+  - component: {fileID: 8609808755570170865}
+  m_Layer: 0
+  m_Name: TELEMETRYDataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5721644233720036532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011470915469227032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2731903720684937201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8609808755570170865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011470915469227032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39c0f01a91822946928f232e293bdc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 1798017685689096700}
+  telemetryWrapper:
+    telemetry:
+      eva_time: 0
+      eva1:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
+      eva2:
+        batt_time_left: 0
+        oxy_pri_storage: 0
+        oxy_sec_storage: 0
+        oxy_pri_pressure: 0
+        oxy_sec_pressure: 0
+        oxy_time_left: 0
+        heart_rate: 0
+        oxy_consumption: 0
+        co2_production: 0
+        suit_pressure_oxy: 0
+        suit_pressure_co2: 0
+        suit_pressure_other: 0
+        suit_pressure_total: 0
+        fan_pri_rpm: 0
+        fan_sec_rpm: 0
+        helmet_pressure_co2: 0
+        scrubber_a_co2_storage: 0
+        scrubber_b_co2_storage: 0
+        temperature: 0
+        coolant_ml: 0
+        coolant_gas_pressure: 0
+        coolant_liquid_pressure: 0
+--- !u!1 &4482462756887584142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4729482907428468019}
+  - component: {fileID: 7305585622158461413}
+  m_Layer: 0
+  m_Name: UIADataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4729482907428468019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482462756887584142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2731903720684937201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7305585622158461413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482462756887584142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36993b37e54a23346a859ec4c0cee4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 1798017685689096700}
+  uiaWrapper:
+    uia:
+      eva1_power: 0
+      eva1_oxy: 0
+      eva1_water_supply: 0
+      eva1_water_waste: 0
+      eva2_power: 0
+      eva2_oxy: 0
+      eva2_water_supply: 0
+      eva2_water_waste: 0
+      oxy_vent: 0
+      depress: 0
+--- !u!1 &8452947427721530484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2731903720684937201}
+  - component: {fileID: 2867647875775789002}
+  - component: {fileID: 5880022839317555867}
+  - component: {fileID: 1798017685689096700}
+  m_Layer: 0
+  m_Name: TSSHandlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2731903720684937201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452947427721530484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5721644233720036532}
+  - {fileID: 4729482907428468019}
+  - {fileID: 250777913602583364}
+  - {fileID: 6487160544759682024}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2867647875775789002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452947427721530484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f184378217f4d4a87155d51cdd4b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5880022839317555867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452947427721530484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a622b7ee69b3a3943a232d902e722281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSSc: {fileID: 2867647875775789002}
+  InputFieldUrl: {fileID: 0}
+  ConnectButton: {fileID: 0}
+--- !u!114 &1798017685689096700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452947427721530484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d02dd6b2a277334ca2810cf323d709d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSSc: {fileID: 2867647875775789002}
+--- !u!1 &9149577806946189768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250777913602583364}
+  - component: {fileID: 4154125802060034197}
+  m_Layer: 0
+  m_Name: DCUDataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &250777913602583364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149577806946189768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2731903720684937201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4154125802060034197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149577806946189768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdddf82fceeb574291d1db82adc7837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TSS: {fileID: 1798017685689096700}
+  dcuWrapper:
+    dcu:
+      eva1:
+        batt: 0
+        oxy: 0
+        comm: 0
+        fan: 0
+        pump: 0
+        co2: 0
+      eva2:
+        batt: 0
+        oxy: 0
+        comm: 0
+        fan: 0
+        pump: 0
+        co2: 0

@@ -24,7 +24,7 @@ public class EgressProcedure : Procedure
 
         // TODO delete this from Start function, this is just for testing
         // (Attach this to a button at some point)
-        startProcedure();
+        //startProcedure();
 
         // Make the list of task checkers
         taskChecks = new List<System.Action>
@@ -82,9 +82,22 @@ public class EgressProcedure : Procedure
             "Once connected, use the UIA's EV-1 and EV-2 power switches to power " +
             "each suit.";
 
-        // TODO fix so that this gets the power status of each suit from UIA
-        bool eva1Status = false;
-        bool eva2Status = false;
+        // Get the power status of each suit from UIA
+        bool eva1Status;
+        bool eva2Status;
+
+        try
+        {
+            eva1Status = uiaData.GetPower("eva1");
+            eva2Status = uiaData.GetPower("eva2");
+        }
+
+        catch
+        {
+            //Debug.Log("Exception in egress procedure step 1.1: " + e.Message);
+            eva1Status = false;
+            eva2Status = false;
+        }
 
         advanceFlag = (eva1Status && eva2Status);
         status = string.Format("EV-1 PWR status: {0}\nEV-2 PWR status: {1}",
@@ -101,11 +114,24 @@ public class EgressProcedure : Procedure
     {
         info = "For each DCU, switch the battery mode to umbilical.";
 
-        // TODO fix so that this gets the current battery status of each DCU (local or umbilical)
-        bool eva1Status = false;
-        bool eva2Status = false;
+        // Get the current battery status of each DCU (local or umbilical)
+        bool eva1Status;
+        bool eva2Status;
 
-        advanceFlag = (eva1Status && eva2Status);
+        try
+        {
+            eva1Status = dcuData.GetBatt("eva1");
+            eva2Status = dcuData.GetBatt("eva2");
+        }
+
+        catch
+        {
+            //Debug.Log("Exception in egress procedure step 1.2: " + e.Message);
+            eva1Status = false;
+            eva2Status = false;
+        }
+
+        advanceFlag = !(eva1Status || eva2Status);
         status = string.Format("EV-1 DCU-BATT status: {0}\nEV-2 DCU-BATT status: {1}",
                                 helper.formatDCUBatt(eva1Status),
                                 helper.formatDCUBatt(eva2Status));
@@ -121,8 +147,19 @@ public class EgressProcedure : Procedure
 
         info = "Turn on the depress pump power to begin the depress of each suit.";
 
-        // TODO fix so that this gets the UIA's depress pump status
-        bool depressStatus = false;
+        // Get the UIA's depress pump status
+        bool depressStatus;
+
+        try
+        {
+            depressStatus = uiaData.GetDepress();
+        }
+
+        catch
+        {
+            //Debug.Log("Exception in egress procedure step 1.3: " + e.Message);
+            depressStatus = false;
+        }
 
         advanceFlag = depressStatus;
         status = string.Format("UIA depress pump power status: {0}",
@@ -139,8 +176,19 @@ public class EgressProcedure : Procedure
     {
         info = "Open the oxygen vent on the UIA.";
 
-        // TODO fix so that this gets the UIA's oxy vent status
-        bool oxyVentStatus = false;
+        // Get the UIA's oxy vent status
+        bool oxyVentStatus;
+
+        try
+        {
+            oxyVentStatus = uiaData.GetOxy_Vent();
+        }
+
+        catch
+        {
+            //Debug.Log("Exception in egress procedure step 2.1: " + e.Message);
+            oxyVentStatus = false;
+        }
 
         advanceFlag = oxyVentStatus == true;
         status = string.Format("UIA O2 vent status: {0}",
@@ -157,11 +205,27 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the primary and secondary oxygen tank pressures for both EVs are under 10 psi.";
 
-        // TODO fix to get actual readings
-        float ev1Primary = 0f;
-        float ev1Secondary = 0f;
-        float ev2Primary = 0f;
-        float ev2Secondary = 0f;
+        // Get the tank readings
+        float ev1Primary;
+        float ev1Secondary;
+        float ev2Primary;
+        float ev2Secondary;
+
+        try
+        {
+            ev1Primary = teleData.GetOxyPriPressure("eva1");
+            ev1Secondary = teleData.GetOxySecPressure("eva1");
+            ev2Primary = teleData.GetOxyPriPressure("eva2");
+            ev2Secondary = teleData.GetOxySecPressure("eva2");
+        }
+
+        catch
+        {
+            ev1Primary = 0f;
+            ev1Secondary = 0f;
+            ev2Primary = 0f;
+            ev2Secondary = 0f;
+        }
 
         advanceFlag = (ev1Primary < 10f &&
                         ev1Secondary < 10f &&
@@ -188,8 +252,17 @@ public class EgressProcedure : Procedure
     {
         info = "UIA: Switch the OXYGEN O2 VENT to CLOSED.";
 
-        // TODO fix to get actual readings
-        bool oxyVentStatus = false;
+        // Check the status of the oxygen vent
+        bool oxyVentStatus;
+
+        try
+        {
+            oxyVentStatus = uiaData.GetOxy_Vent();
+        }
+        catch
+        {
+            oxyVentStatus = false;
+        }
 
         advanceFlag = oxyVentStatus == false;
         status = string.Format("UIA O2 vent status: {0}",
@@ -206,9 +279,20 @@ public class EgressProcedure : Procedure
     {
         info = "For each DCU, set the primary oxygen tank as the active tank.";
 
-        // TODO fix to get actual readings
-        bool ev1Oxy = false;
-        bool ev2Oxy = false;
+        // Check the active tanks
+        bool ev1Oxy;
+        bool ev2Oxy;
+
+        try
+        {
+            ev1Oxy = dcuData.GetOxy("eva1");
+            ev2Oxy = dcuData.GetOxy("eva2");
+        }
+        catch
+        {
+            ev1Oxy = false;
+            ev2Oxy = false;
+        }
 
         advanceFlag = (ev1Oxy && ev2Oxy);
         status = string.Format("EV-1 DCU OXY active tank: {0}\n" +
@@ -227,9 +311,20 @@ public class EgressProcedure : Procedure
     {
         info = "Start to fill the primary oxygen tank for each EV.";
 
-        // TODO fix to get actual readings
-        bool eva1Oxy = false;
-        bool eva2Oxy = false;
+        // Get the oxygen readings
+        bool eva1Oxy;
+        bool eva2Oxy;
+
+        try
+        {
+            eva1Oxy = uiaData.GetOxy("eva1");
+            eva2Oxy = uiaData.GetOxy("eva2");
+        }
+        catch
+        {
+            eva1Oxy = false;
+            eva2Oxy = false;
+        }
 
         advanceFlag = (eva1Oxy && eva2Oxy);
         status = string.Format("UIA EMU-1 oxygen valve status: {0}\n" +
@@ -249,9 +344,20 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the primary oxygen tank pressure for both EVs is over 3000 psi.";
 
-        // TODO fix to get actual readings
-        float ev1Primary = 0f;
-        float ev2Primary = 0f;
+        // Get oxygen pressure readings
+        float ev1Primary;
+        float ev2Primary;
+
+        try
+        {
+            ev1Primary = teleData.GetOxyPriPressure("eva1");
+            ev2Primary = teleData.GetOxyPriPressure("eva2");
+        }
+        catch
+        {
+            ev1Primary = 0f;
+            ev2Primary = 0f;
+        }
 
         advanceFlag = (ev1Primary > 3000f &&
                         ev2Primary > 3000f);
@@ -273,9 +379,20 @@ public class EgressProcedure : Procedure
     {
         info = "Finish filling the primary oxygen tank for each EV.";
 
-        // TODO fix to get actual readings
-        bool eva1Oxy = false;
-        bool eva2Oxy = false;
+        // Get the oxygen readings
+        bool eva1Oxy;
+        bool eva2Oxy;
+
+        try
+        {
+            eva1Oxy = uiaData.GetOxy("eva1");
+            eva2Oxy = uiaData.GetOxy("eva2");
+        }
+        catch
+        {
+            eva1Oxy = false;
+            eva2Oxy = false;
+        }
 
         advanceFlag = !(eva1Oxy || eva2Oxy);
         status = string.Format("UIA EMU-1 oxygen valve status: {0}\n" +
@@ -295,9 +412,20 @@ public class EgressProcedure : Procedure
     {
         info = "For each DCU, set the secondary oxygen tank as the active tank.";
 
-        // TODO fix to get actual readings
-        bool ev1Oxy = false;
-        bool ev2Oxy = false;
+        // Check the active tanks
+        bool ev1Oxy;
+        bool ev2Oxy;
+
+        try
+        {
+            ev1Oxy = dcuData.GetOxy("eva1");
+            ev2Oxy = dcuData.GetOxy("eva2");
+        }
+        catch
+        {
+            ev1Oxy = false;
+            ev2Oxy = false;
+        }
 
         advanceFlag = !(ev1Oxy && ev2Oxy);
         status = string.Format("EV-1 DCU OXY active tank: {0}\n" +
@@ -316,9 +444,20 @@ public class EgressProcedure : Procedure
     {
         info = "Start to fill the secondary oxygen tank for each EV.";
 
-        // TODO fix to get actual readings
-        bool eva1Oxy = false;
-        bool eva2Oxy = false;
+        // Get the oxygen readings
+        bool eva1Oxy;
+        bool eva2Oxy;
+
+        try
+        {
+            eva1Oxy = uiaData.GetOxy("eva1");
+            eva2Oxy = uiaData.GetOxy("eva2");
+        }
+        catch
+        {
+            eva1Oxy = false;
+            eva2Oxy = false;
+        }
 
         advanceFlag = (eva1Oxy && eva2Oxy);
         status = string.Format("UIA EMU-1 oxygen valve status: {0}\n" +
@@ -337,9 +476,20 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the secondary oxygen tank pressure for both EVs is over 3000 psi.";
 
-        // TODO fix to get actual readings
-        float ev1Secondary = 0f;
-        float ev2Secondary = 0f;
+        // Get oxygen pressure readings
+        float ev1Secondary;
+        float ev2Secondary;
+
+        try
+        {
+            ev1Secondary = teleData.GetOxySecPressure("eva1");
+            ev2Secondary = teleData.GetOxySecPressure("eva2");
+        }
+        catch
+        {
+            ev1Secondary = 0f;
+            ev2Secondary = 0f;
+        }
 
         advanceFlag = (ev1Secondary > 3000f &&
                         ev2Secondary > 3000f);
@@ -361,9 +511,20 @@ public class EgressProcedure : Procedure
     {
         info = "Finish filling the secondary oxygen tank for each EV.";
 
-        // TODO fix to get actual readings
-        bool eva1Oxy = false;
-        bool eva2Oxy = false;
+        // Get the oxygen readings
+        bool eva1Oxy;
+        bool eva2Oxy;
+
+        try
+        {
+            eva1Oxy = uiaData.GetOxy("eva1");
+            eva2Oxy = uiaData.GetOxy("eva2");
+        }
+        catch
+        {
+            eva1Oxy = false;
+            eva2Oxy = false;
+        }
 
         advanceFlag = !(eva1Oxy || eva2Oxy);
         status = string.Format("UIA EMU-1 oxygen valve status: {0}\n" +
@@ -384,9 +545,20 @@ public class EgressProcedure : Procedure
     {
         info = "For each DCU, set the primary oxygen tank as the active tank.";
 
-        // TODO fix to get actual readings
-        bool ev1Oxy = false;
-        bool ev2Oxy = false;
+        // Check the active tanks
+        bool ev1Oxy;
+        bool ev2Oxy;
+
+        try
+        {
+            ev1Oxy = dcuData.GetOxy("eva1");
+            ev2Oxy = dcuData.GetOxy("eva2");
+        }
+        catch
+        {
+            ev1Oxy = false;
+            ev2Oxy = false;
+        }
 
         advanceFlag = (ev1Oxy && ev2Oxy);
         status = string.Format("EV-1 DCU OXY active tank: {0}\n" +
@@ -408,9 +580,19 @@ public class EgressProcedure : Procedure
         info = "For each DCU, open the water pump to allow coolant to flow " +
             "between the EVs’ suits and the UIA.";
 
-        // TODO fix to get actual readings
-        bool eva1Pump = false;
-        bool eva2Pump = false;
+        bool eva1Pump;
+        bool eva2Pump;
+
+        try
+        {
+            eva1Pump = dcuData.GetPump("eva1");
+            eva2Pump = dcuData.GetPump("eva2");
+        }
+        catch
+        {
+            eva1Pump = false;
+            eva2Pump = false;
+        }
 
         advanceFlag = (eva1Pump && eva2Pump);
         status = string.Format("UIA EMU-1 water pump status: {0}\n" +
@@ -431,9 +613,21 @@ public class EgressProcedure : Procedure
         info = "Turn on each EV’s waste water valve using the UIA to begin " +
             "flushing the waste water. ";
 
-        // TODO fix to get actual readings
-        bool eva1WasteWater = false;
-        bool eva2WasteWater = false;
+        // Get the waste water valve status
+        bool eva1WasteWater;
+        bool eva2WasteWater;
+
+        try
+        {
+            eva1WasteWater = uiaData.GetWater_Waste("eva1");
+            eva2WasteWater = uiaData.GetWater_Waste("eva2");
+        }
+
+        catch
+        {
+            eva1WasteWater = false;
+            eva2WasteWater = false;
+        }
 
         advanceFlag = (eva1WasteWater && eva2WasteWater);
         status = string.Format("UIA EMU-1 waste water valve status: {0}\n" +
@@ -452,17 +646,30 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the water coolant level for each EV is almost empty.";
 
-        // TODO fix to get actual readings
-        float ev1Coolant = 0f;
-        float ev2Coolant = 0f;
+        // Get the coolant readings for each EV
+        float ev1Coolant;
+        float ev2Coolant;
 
-        advanceFlag = (ev1Coolant < 0.05f &&
-                        ev2Coolant < 0.05f);
+        try
+        {
+            ev1Coolant = teleData.GetCoolantMl("eva1");
+            ev2Coolant = teleData.GetCoolantMl("eva2");
+        }
+        catch
+        {
+            ev1Coolant = 0f;
+            ev2Coolant = 0f;
+        }
+
+        // TODO check these values?
+        // (instructions give in percentages, actual data is in milliliters)
+        advanceFlag = (ev1Coolant < 5f &&
+                        ev2Coolant < 5f);
 
         status = string.Format("EV-1 water coolant level: {0}\n" +
                                 "EV-2 water coolant level: {1}\n",
-                                helper.formatPercentage(ev1Coolant),
-                                helper.formatPercentage(ev2Coolant)
+                                helper.formatCapacity(ev1Coolant),
+                                helper.formatCapacity(ev2Coolant)
                                 );
     }
 
@@ -475,9 +682,21 @@ public class EgressProcedure : Procedure
     {
         info = "Close the waste water valves using the UIA.";
 
-        // TODO fix to get actual readings
-        bool eva1WasteWater = false;
-        bool eva2WasteWater = false;
+        // Get the waste water valve status
+        bool eva1WasteWater;
+        bool eva2WasteWater;
+
+        try
+        {
+            eva1WasteWater = uiaData.GetWater_Waste("eva1");
+            eva2WasteWater = uiaData.GetWater_Waste("eva2");
+        }
+
+        catch
+        {
+            eva1WasteWater = false;
+            eva2WasteWater = false;
+        }
 
         advanceFlag = !(eva1WasteWater || eva2WasteWater);
         status = string.Format("UIA EMU-1 waste water valve status: {0}\n" +
@@ -499,9 +718,20 @@ public class EgressProcedure : Procedure
         info = "Turn on each EV’s supply water valve using the UIA to begin " +
             "refilling the coolant tank. ";
 
-        // TODO fix to get actual readings
-        bool eva1SupplyWater = false;
-        bool eva2SupplyWater = false;
+        // Get valve status
+        bool eva1SupplyWater;
+        bool eva2SupplyWater;
+
+        try
+        {
+            eva1SupplyWater = uiaData.GetWater_Supply("eva1");
+            eva2SupplyWater = uiaData.GetWater_Supply("eva2");
+        }
+        catch
+        {
+            eva1SupplyWater = false;
+            eva2SupplyWater = false;
+        }
 
         advanceFlag = (eva1SupplyWater && eva2SupplyWater);
         status = string.Format("UIA EMU-1 supply water valve status: {0}\n" +
@@ -521,17 +751,30 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the water coolant level for each EV is almost full.";
 
-        // TODO fix to get actual readings
-        float ev1Coolant = 0f;
-        float ev2Coolant = 0f;
+        // Get the coolant readings for each EV
+        float ev1Coolant;
+        float ev2Coolant;
 
-        advanceFlag = (ev1Coolant > 0.95f &&
-                        ev2Coolant > 0.95f);
+        try
+        {
+            ev1Coolant = teleData.GetCoolantMl("eva1");
+            ev2Coolant = teleData.GetCoolantMl("eva2");
+        }
+        catch
+        {
+            ev1Coolant = 0f;
+            ev2Coolant = 0f;
+        }
 
+        advanceFlag = (ev1Coolant > 95f &&
+                        ev2Coolant > 95f);
+
+        // TODO check these values?
+        // (instructions give in percentages, actual data is in milliliters)
         status = string.Format("EV-1 water coolant level: {0}\n" +
                                 "EV-2 water coolant level: {1}\n",
-                                helper.formatPercentage(ev1Coolant),
-                                helper.formatPercentage(ev2Coolant)
+                                helper.formatCapacity(ev1Coolant),
+                                helper.formatCapacity(ev2Coolant)
                                 );
 
     }
@@ -545,9 +788,20 @@ public class EgressProcedure : Procedure
     {
         info = "Close the supply water valves using the UIA.";
 
-        // TODO fix to get actual readings
-        bool eva1SupplyWater = false;
-        bool eva2SupplyWater = false;
+        // Get valve status
+        bool eva1SupplyWater;
+        bool eva2SupplyWater;
+
+        try
+        {
+            eva1SupplyWater = uiaData.GetWater_Supply("eva1");
+            eva2SupplyWater = uiaData.GetWater_Supply("eva2");
+        }
+        catch
+        {
+            eva1SupplyWater = false;
+            eva2SupplyWater = false;
+        }
 
         advanceFlag = !(eva1SupplyWater || eva2SupplyWater);
         status = string.Format("UIA EMU-1 supply water valve status: {0}\n" +
@@ -569,9 +823,19 @@ public class EgressProcedure : Procedure
         info = "For each DCU, stop coolant from flowing between " +
             "the EVs’ suits and the UIA.";
 
-        // TODO fix to get actual readings
-        bool eva1Pump = false;
-        bool eva2Pump = false;
+        bool eva1Pump;
+        bool eva2Pump;
+
+        try
+        {
+            eva1Pump = dcuData.GetPump("eva1");
+            eva2Pump = dcuData.GetPump("eva2");
+        }
+        catch
+        {
+            eva1Pump = false;
+            eva2Pump = false;
+        }
 
         advanceFlag = !(eva1Pump || eva2Pump);
         status = string.Format("UIA EMU-1 water pump status: {0}\n" +
@@ -590,9 +854,22 @@ public class EgressProcedure : Procedure
     {
         info = "Wait until the suit pressure for each EV is at 4 psi.";
 
-        // TODO fix to get actual readings
-        float ev1SuitPressure = 0f;
-        float ev2SuitPressure = 0f;
+        // Get suit pressure readings
+        float ev1SuitPressure;
+        float ev2SuitPressure;
+
+        try
+        {
+            // TODO check which pressure reading to use here?
+            ev1SuitPressure = teleData.GetSuitPressureOxy("eva1");
+            ev2SuitPressure = teleData.GetSuitPressureOxy("eva2");
+        }
+        catch
+        {
+            ev1SuitPressure = 4f;
+            ev2SuitPressure = 4f;
+        }
+
 
         advanceFlag = (ev1SuitPressure < 5f &&
                         ev1SuitPressure > 3f &&
@@ -615,8 +892,18 @@ public class EgressProcedure : Procedure
     {
         info = "Turn off the depress pump power to conclude the depress of each suit.";
 
-        // TODO fix to get actual readings
-        bool depressStatus = false;
+        // Get the UIA's depress pump status
+        bool depressStatus;
+
+        try
+        {
+            depressStatus = uiaData.GetDepress();
+        }
+
+        catch
+        {
+            depressStatus = false;
+        }
 
         advanceFlag = !depressStatus;
         status = string.Format("UIA depress pump power status: {0}",
@@ -633,9 +920,21 @@ public class EgressProcedure : Procedure
     {
         info = "For each DCU, switch the battery mode to local.";
 
-        // TODO fix to get actual readings
-        bool eva1Status = false;
-        bool eva2Status = false;
+        // Get the current battery status of each DCU (local or umbilical)
+        bool eva1Status;
+        bool eva2Status;
+
+        try
+        {
+            eva1Status = dcuData.GetBatt("eva1");
+            eva2Status = dcuData.GetBatt("eva2");
+        }
+
+        catch
+        {
+            eva1Status = false;
+            eva2Status = false;
+        }
 
         advanceFlag = !(eva1Status || eva2Status);
         status = string.Format("EV-1 DCU-BATT status: {0}\nEV-2 DCU-BATT status: {1}",
@@ -652,9 +951,20 @@ public class EgressProcedure : Procedure
     {
         info = "Conclude powering each EV’s suit using the UIA.";
 
-        // TODO fix to get actual readings
-        bool eva1Status = false;
-        bool eva2Status = false;
+        // Get the power status of each suit from UIA
+        bool eva1Status;
+        bool eva2Status;
+
+        if (uiaData != null)
+        {
+            eva1Status = uiaData.GetPower("eva1");
+            eva2Status = uiaData.GetPower("eva2");
+        }
+        else // for testing
+        {
+            eva1Status = false;
+            eva2Status = false;
+        }
 
         advanceFlag = !(eva1Status || eva2Status);
         status = string.Format("EV-1 PWR status: {0}\nEV-2 PWR status: {1}",
@@ -678,8 +988,81 @@ public class EgressProcedure : Procedure
     {
         info = "Verify that both EVs are ready to conclude the egress procedure.";
 
-        // TODO fix to get actual readings
+        // Get the readings
+        bool eva1batt;
+        bool eva1oxy;
+        bool eva1comms;
+        bool eva1fan;
+        bool eva1pump;
+        bool eva1co2;
 
+        bool eva2batt;
+        bool eva2oxy;
+        bool eva2comms;
+        bool eva2fan;
+        bool eva2pump;
+        bool eva2co2;
+
+        try
+        {
+            eva1batt = dcuData.GetBatt("eva1");
+            eva1oxy = dcuData.GetBatt("eva1");
+            eva1comms = dcuData.GetBatt("eva1");
+            eva1fan = dcuData.GetBatt("eva1");
+            eva1pump = dcuData.GetBatt("eva1");
+            eva1co2 = dcuData.GetBatt("eva1");
+
+            eva2batt = dcuData.GetBatt("eva2");
+            eva2oxy = dcuData.GetBatt("eva2");
+            eva2comms = dcuData.GetBatt("eva2");
+            eva2fan = dcuData.GetBatt("eva2");
+            eva2pump = dcuData.GetBatt("eva2");
+            eva2co2 = dcuData.GetBatt("eva2");
+        }
+        catch
+        {
+            eva1batt = false;
+            eva1oxy = false;
+            eva1comms = false;
+            eva1fan = false;
+            eva1pump = false;
+            eva1co2 = false;
+
+            eva2batt = false;
+            eva2oxy = false;
+            eva2comms = false;
+            eva2fan = false;
+            eva2pump = false;
+            eva2co2 = false;
+        }
+
+        advanceFlag = (eva1batt &&
+                        eva1oxy &&
+                        eva1comms &&
+                        eva1fan &&
+                        eva1pump &&
+                        eva1co2 &&
+                        eva2batt &&
+                        eva2oxy &&
+                        eva2comms &&
+                        eva2fan &&
+                        eva2pump &&
+                        eva2co2);
+        status = string.Format("EV-1: {0}, {1}, {2}, {3}, {4}, {5}\n" +
+                                "EV-1: {6}, {7}, {8}, {9}, {10}, {11}",
+                                helper.formatDCUBatt(eva1batt),
+                                helper.formatDCUOxy(eva1oxy),
+                                helper.formatDCUComms(eva1comms),
+                                helper.formatDCUFan(eva1fan),
+                                helper.formatDCUPump(eva1pump),
+                                helper.formatDCUCO2(eva1co2),
+                                helper.formatDCUBatt(eva2batt),
+                                helper.formatDCUOxy(eva2oxy),
+                                helper.formatDCUComms(eva2comms),
+                                helper.formatDCUFan(eva2fan),
+                                helper.formatDCUPump(eva2pump),
+                                helper.formatDCUCO2(eva2co2)
+                                );
 
     }
 

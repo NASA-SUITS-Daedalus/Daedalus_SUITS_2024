@@ -95,6 +95,7 @@ public class Task : MonoBehaviour
      */
     public void setReady()
     {
+
         // Highlight the task in a different color
         taskUI.GetComponent<Image>().color = readyColor;
 

@@ -20,7 +20,13 @@ public abstract class Procedure : MonoBehaviour
     public Task startTask;
 
     // The telemetry data receiver
-    public TELEMETRYDataHandler data;
+    public TELEMETRYDataHandler teleData;
+
+    // The DCU data receiver
+    public DCUDataHandler dcuData;
+
+    // The UIA data receiver
+    public UIADataHandler uiaData;
 
     // Whether or not the procedure has started yet
     public bool hasStarted;
