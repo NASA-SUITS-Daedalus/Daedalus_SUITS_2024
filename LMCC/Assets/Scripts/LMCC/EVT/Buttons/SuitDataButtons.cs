@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SuitDataButtonController : MonoBehaviour
 {
@@ -8,50 +9,84 @@ public class SuitDataButtonController : MonoBehaviour
     public FanMonitor fanMonitor;
     public ScrubberMonitor scrubberMonitor;
 
+    public Button oxygenButton;
+    public Button pressureButton;
+    public Button coolantButton;
+    public Button fanButton;
+    public Button scrubberButton;
+    public Button tssButton;
+
     // Called when the Oxygen button is clicked
     public void OnOxygenButtonClick()
     {
-        oxygenMonitor.SetCurrentSuitData("Oxygen");
-        pressureMonitor.SetCurrentSuitData("Oxygen");
-        coolantMonitor.SetCurrentSuitData("Oxygen");
-        scrubberMonitor.SetCurrentSuitData("Oxygen");
-        fanMonitor.SetCurrentSuitData("Oxygen");
+        HighlightButton(oxygenButton);
+        SetCurrentData("Oxygen", oxygenButton);
     }
 
     // Called when the Pressure button is clicked
     public void OnPressureButtonClick()
     {
-        oxygenMonitor.SetCurrentSuitData("Pressure");
-        pressureMonitor.SetCurrentSuitData("Pressure");
-        coolantMonitor.SetCurrentSuitData("Pressure");
-        scrubberMonitor.SetCurrentSuitData("Pressure");
-        fanMonitor.SetCurrentSuitData("Pressure");
+        HighlightButton(pressureButton);
+        SetCurrentData("Pressure", pressureButton);
+        
     }
 
     public void OnCoolantButtonClick()
     {
-        oxygenMonitor.SetCurrentSuitData("Coolant");
-        pressureMonitor.SetCurrentSuitData("Coolant");
-        coolantMonitor.SetCurrentSuitData("Coolant");
-        scrubberMonitor.SetCurrentSuitData("Coolant");
-        fanMonitor.SetCurrentSuitData("Coolant");
+        HighlightButton(coolantButton);
+        SetCurrentData("Coolant", coolantButton);
     }
 
     public void OnFanButtonClick()
     {
-        oxygenMonitor.SetCurrentSuitData("Fan");
-        pressureMonitor.SetCurrentSuitData("Fan");
-        coolantMonitor.SetCurrentSuitData("Fan");
-        scrubberMonitor.SetCurrentSuitData("Fan");
-        fanMonitor.SetCurrentSuitData("Fan");
+        HighlightButton(fanButton);
+        SetCurrentData("Fan", fanButton);
     }
 
     public void OnScrubberButtonClick()
     {
-        oxygenMonitor.SetCurrentSuitData("Scrubber");
-        pressureMonitor.SetCurrentSuitData("Scrubber");
-        coolantMonitor.SetCurrentSuitData("Scrubber");
-        scrubberMonitor.SetCurrentSuitData("Scrubber");
-        fanMonitor.SetCurrentSuitData("Scrubber");
+        HighlightButton(scrubberButton);
+        SetCurrentData("Scrubber", scrubberButton);
+    }
+
+    public void OnTSSButtonClick()
+    {
+        // Highlight the Oxygen button
+        
+        HighlightButton(oxygenButton);
+        SetCurrentData("Oxygen", oxygenButton);
+
+        // Set the current data
+
+    }
+
+    // Common method to set the current data and highlight the button
+    private void SetCurrentData(string data, Button button)
+    {
+        oxygenMonitor.SetCurrentSuitData(data);
+        pressureMonitor.SetCurrentSuitData(data);
+        coolantMonitor.SetCurrentSuitData(data);
+        scrubberMonitor.SetCurrentSuitData(data);
+        fanMonitor.SetCurrentSuitData(data);
+    }
+
+    // Helper method to highlight a specific button
+    private void HighlightButton(Button button)
+    {
+        // Unhighlight all buttons
+        UnhighlightAllButtons();
+
+        // Highlight the specified button
+        button.image.color = Color.yellow; // Change the color as needed
+    }
+
+    // Helper method to unhighlight all buttons
+    private void UnhighlightAllButtons()
+    {
+        oxygenButton.image.color = Color.white;
+        pressureButton.image.color = Color.white;
+        coolantButton.image.color = Color.white;
+        fanButton.image.color = Color.white;
+        scrubberButton.image.color = Color.white;
     }
 }

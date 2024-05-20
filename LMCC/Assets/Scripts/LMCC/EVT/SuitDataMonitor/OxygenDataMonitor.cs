@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 
-
 public class OxygenMonitor : MonoBehaviour
 {
     public TELEMETRYDataHandler TELEMETRYDataHandler;
@@ -12,16 +11,17 @@ public class OxygenMonitor : MonoBehaviour
 
     void Update()
     {
-        UpdateOxygenUI();
+        // Only update the UI if the "Oxygen" button is clicked
+        if (currentSuitData == "Oxygen")
+        {
+            UpdateOxygenUI();
+        }
     }
 
     public void UpdateOxygenUI()
     {
-        if (currentSuitData == "Oxygen")
-        {
-            string oxyData = GetOxygenData();
-            oxyDataText.text = $"Oxygen Data for {currentEVA}:\n{oxyData}";
-        }
+        string oxyData = GetOxygenData();
+        oxyDataText.text = $"Oxygen Data for {currentEVA}:\n{oxyData}";
     }
 
     public void SetCurrentEVA(string eva)
@@ -33,6 +33,7 @@ public class OxygenMonitor : MonoBehaviour
     public void SetCurrentSuitData(string suitData)
     {
         currentSuitData = suitData;
+        // Optionally clear the text when switching to another data type
         UpdateOxygenUI();
     }
 
