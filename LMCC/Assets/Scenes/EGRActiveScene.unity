@@ -3343,8 +3343,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "SUIT PWR: \nOXY PRESSURE:\nWATER SUPPLY:\nWATER WASTE:\nDCU BATT:\nDCU
-    OXY: \nDCU COMMS:\nDCU FAN: \nDCU PUMP: \nDCU CO2:\n"
+  m_text: "SUIT PWR: \nOXY PRESSURE:\n\nCOOLANT LEVEL:\nDCU BATT:\nDCU OXY: \nDCU
+    COMMS:\nDCU FAN: \nDCU PUMP: \nDCU CO2:\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13605,9 +13605,9 @@ MonoBehaviour:
 
     100 psi
 
-    50%
+    100 psi
 
-    50%
+    50.0 mL
 
     LOCAL
 
