@@ -7,24 +7,24 @@ public class ResetNav : MonoBehaviour
 
     public void ShowConfirmationDialog()
     {
-        // Instantiate the confirmation dialog
-        GameObject dialogInstance = Instantiate(confirmationDialog, transform.position, Quaternion.identity);
+        // Activate the confirmation dialog
+        confirmationDialog.SetActive(true);
     }
 
     public void ConfirmReset()
     {
+        // Deactivate the confirmation dialog
+        confirmationDialog.SetActive(false);
+
         // User confirmed the reset, proceed with removing pins and breadcrumbs
         RemoveAllPins();
         RemoveAllBreadcrumbs();
-
-        // Destroy the confirmation dialog
-        Destroy(confirmationDialog);
     }
 
     public void CancelReset()
     {
-        // User canceled the reset, destroy the confirmation dialog
-        Destroy(confirmationDialog);
+        // User cancelled process, deactivate the confirmation dialog
+        confirmationDialog.SetActive(false);
     }
 
     private void RemoveAllPins()
