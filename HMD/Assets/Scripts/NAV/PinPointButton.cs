@@ -178,9 +178,6 @@ namespace Microsoft.MixedReality.Toolkit.UI
             }
         }
 
-        
-
-
         private System.Collections.IEnumerator UpdatePinState(Transform pinTransform, TMP_Text distanceText, string pinlabelText)
         {
             Renderer pinRenderer = pinTransform.GetComponentInChildren<Renderer>();
