@@ -63,6 +63,9 @@ namespace Microsoft.MixedReality.Toolkit.UI
                     // Drop a breadcrumb at the current position
                     GameObject breadcrumb = Instantiate(breadcrumbPrefab, CameraCache.Main.transform.position, Quaternion.identity);
 
+                    // Assign the "Breadcrumb" tag to the dropped breadcrumb prefab
+                    breadcrumb.tag = "Breadcrumb";
+
                     // Get the TMP_Text component from the breadcrumb prefab
                     TMP_Text labelText = breadcrumb.GetComponentInChildren<TMP_Text>();
                     labelText.text = breadcrumbCount.ToString();
