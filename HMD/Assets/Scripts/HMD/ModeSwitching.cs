@@ -32,42 +32,43 @@ public class ModeSwitching : MonoBehaviour
     {
         DisableAllHUDs();
         egressHUD.SetActive(true);
-        UpdateModeText("EGRESS IN PROGRESS");
+        UpdateModeText("EGRESS IN PROGRESS", Color.green);
     }
 
     public void ToggleGeoMode()
     {
         DisableAllHUDs();
         geoHUD.SetActive(true);
-        UpdateModeText("GEO IN PROGRESS");
+        UpdateModeText("GEO IN PROGRESS", Color.red);
     }
 
     public void ToggleNavigationMode()
     {
         DisableAllHUDs();
         navigationHUD.SetActive(true);
-        UpdateModeText("NAVIGATION IN PROGRESS");
+        UpdateModeText("NAVIGATION IN PROGRESS", Color.blue);
     }
 
     public void ToggleIngressMode()
     {
         DisableAllHUDs();
         ingressHUD.SetActive(true);
-        UpdateModeText("INGRESS IN PROGRESS");
+        UpdateModeText("INGRESS IN PROGRESS", Color.magenta);
     }
 
     public void ToggleRepairMode()
     {
         DisableAllHUDs();
         repairHUD.SetActive(true);
-        UpdateModeText("REPAIR IN PROGRESS");
+        UpdateModeText("REPAIR IN PROGRESS", Color.cyan);
     }
 
-    private void UpdateModeText(string modeText)
+    private void UpdateModeText(string modeText, Color textColor)
     {
         if (modeTextMeshPro != null)
         {
             modeTextMeshPro.text = modeText;
+            modeTextMeshPro.color = textColor;
         }
     }
 }
