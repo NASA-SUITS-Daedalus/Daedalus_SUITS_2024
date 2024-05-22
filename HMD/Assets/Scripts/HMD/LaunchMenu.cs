@@ -49,13 +49,14 @@ public class LaunchMenu : MonoBehaviour
     public void Connect_Button()
     {
         // Get URL in Text Field
-        string host = InputFieldUrl.text;
+        string host;
 
         // Use this to HARDCODE the server address
-        // If you are using remote server,
+
+        // Using NASA Rockyard IP:
         host = "192.168.51.110";
 
-        // If you are using local server,
+        // Using Local Server:
         // host = "127.0.0.1";
 
         // Print Hostname to Logs
