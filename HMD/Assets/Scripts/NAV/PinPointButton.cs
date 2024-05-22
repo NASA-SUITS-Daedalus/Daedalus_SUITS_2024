@@ -155,6 +155,7 @@ namespace Microsoft.MixedReality.Toolkit.UI
                         if (!IsPinTooCloseToExistingPin(pinPosition))
                         {
                             GameObject pin = Instantiate(pinPrefab, pinPosition, Quaternion.identity);
+                            pin.tag = "Pin";
                             // Perform any additional setup or configuration for the instantiated pin
                             // Get the TMP_Text component from the pin prefab
                             TMP_Text distanceText = pin.GetComponentInChildren<TMP_Text>();
@@ -177,9 +178,6 @@ namespace Microsoft.MixedReality.Toolkit.UI
                 }
             }
         }
-
-        
-
 
         private System.Collections.IEnumerator UpdatePinState(Transform pinTransform, TMP_Text distanceText, string pinlabelText)
         {
@@ -213,7 +211,7 @@ namespace Microsoft.MixedReality.Toolkit.UI
         private bool IsPinTooCloseToExistingPin(Vector3 pinPosition)
         {
             // Adjust the minimum distance as needed
-            float minDistance = 0f;
+            float minDistance = 0.5f; // Set a reasonable minimum distance
 
             // Check the distance between the new pin position and existing pins
             foreach (GameObject existingPin in GameObject.FindGameObjectsWithTag("Pin"))

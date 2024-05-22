@@ -18,6 +18,11 @@ public class TaskController : MonoBehaviour
     public TextMeshPro ev1ProgressTextMeshPro;
     public TextMeshPro ev2ProgressTextMeshPro;
 
+    // Overall Progress Bar Game Object
+    public Transform overallBackgroundBar;
+    public Transform overallForegroundBar;
+    public TextMeshPro overallProgressTextMeshPro;
+
     // Progress Text Game Objects
     public TextMeshPro taskStatusTextMeshPro;
 
@@ -78,6 +83,8 @@ public class TaskController : MonoBehaviour
     private void Start()
     {
         UpdateTaskText();
+        UpdateOverallProgressBar();
+        UpdateOverallProgressText();
     }
 
     private void Update()
@@ -85,6 +92,37 @@ public class TaskController : MonoBehaviour
         UpdateProgressBar();
     }
 
+
+    // Update the Overall Egress Progress Bar + Text
+    private void UpdateOverallProgressBar()
+    {
+        int currentTaskIndex = TaskManager.Instance.GetCurrentTaskIndex();
+        int totalTasks = tasks.Length;
+
+        float progress = (float)currentTaskIndex / (totalTasks - 1);
+
+        Vector3 backgroundScale = overallBackgroundBar.localScale;
+        Vector3 foregroundScale = overallForegroundBar.localScale;
+
+        foregroundScale.x = backgroundScale.x * progress;
+        overallForegroundBar.localScale = foregroundScale;
+
+        Vector3 foregroundPosition = overallForegroundBar.localPosition;
+        Vector3 backgroundPosition = overallBackgroundBar.localPosition;
+        float leftPivot = backgroundPosition.x - backgroundScale.x * 0.5f;
+        foregroundPosition.x = leftPivot + foregroundScale.x * 0.5f;
+        overallForegroundBar.localPosition = foregroundPosition;
+    }
+
+    private void UpdateOverallProgressText()
+    {
+        int currentTaskIndex = TaskManager.Instance.GetCurrentTaskIndex();
+        int totalTasks = tasks.Length;
+
+        overallProgressTextMeshPro.text = $"Egress: {currentTaskIndex + 1}/{totalTasks} Steps";
+    }
+
+    // Update the individual step's progress bar + text
     private void UpdateProgressBar()
     {
         int currentTaskIndex = TaskManager.Instance.GetCurrentTaskIndex();
@@ -970,6 +1008,8 @@ public class TaskController : MonoBehaviour
         {
             TaskManager.Instance.SetCurrentTaskIndex(currentTaskIndex + 1);
             UpdateTaskText();
+            UpdateOverallProgressBar();
+            UpdateOverallProgressText();
         }
     }
 
@@ -980,6 +1020,8 @@ public class TaskController : MonoBehaviour
         {
             TaskManager.Instance.SetCurrentTaskIndex(currentTaskIndex - 1);
             UpdateTaskText();
+            UpdateOverallProgressBar();
+            UpdateOverallProgressText();
         }
     }
 
